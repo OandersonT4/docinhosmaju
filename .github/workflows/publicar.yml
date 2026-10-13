@@ -1,0 +1,124 @@
+# Botão "Publicar no site": envia os arquivos do repositório para a VPS (docinhosmaju.com.br).
+# Só roda quando o dono clica em Actions > Publicar no site > Run workflow.
+# Rode primeiro em "simular": mostra o que mudaria, sem enviar nada.
+# Nunca apaga arquivos da VPS e nunca envia o que está em .deployignore.
+# Segurança:
+#  - só roda a partir da main, no ambiente "producao" (Settings > Environments), onde ficam os segredos;
+#  - entra na VPS com o usuário "maju", que só tem acesso à pasta deste site;
+#  - com o segredo VPS_KNOWN_HOSTS, só conversa com a VPS verdadeira (identidade fixada).
+
+name: Publicar no site
+
+on:
+  workflow_dispatch:
+    inputs:
+      modo:
+        description: "simular = só mostra o que mudaria · publicar = envia de verdade"
+        type: choice
+        options: [simular, publicar]
+        default: simular
+
+concurrency: publicar-site
+
+permissions:
+  contents: read
+
+jobs:
+  publicar:
+    if: github.ref == 'refs/heads/main'
+    runs-on: ubuntu-latest
+    environment: producao
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@fbc6f3992d24b796d5a048ff273f7fcc4a7b6c09 # v5.1.0
+
+      - name: Conferir segredos
+        env:
+          VPS_HOST: ${{ secrets.VPS_HOST }}
+          VPS_USER: ${{ secrets.VPS_USER }}
+          VPS_SSH_KEY: ${{ secrets.VPS_SSH_KEY }}
+          VPS_KNOWN_HOSTS: ${{ secrets.VPS_KNOWN_HOSTS }}
+        run: |
+          faltam=""
+          [ -n "$VPS_HOST" ] || faltam="$faltam VPS_HOST"
+          [ -n "$VPS_USER" ] || faltam="$faltam VPS_USER"
+          [ -n "$VPS_SSH_KEY" ] || faltam="$faltam VPS_SSH_KEY"
+          [ -n "$VPS_KNOWN_HOSTS" ] || faltam="$faltam VPS_KNOWN_HOSTS"
+          if [ -n "$faltam" ]; then echo "::error::Cadastre em Settings > Environments > producao:$faltam"; exit 1; fi
+
+      - name: Preparar acesso à VPS
+        env:
+          VPS_SSH_KEY: ${{ secrets.VPS_SSH_KEY }}
+          VPS_KNOWN_HOSTS: ${{ secrets.VPS_KNOWN_HOSTS }}
+        run: |
+          mkdir -p ~/.ssh && chmod 700 ~/.ssh
+          printf '%s\n' "$VPS_SSH_KEY" | tr -d '\r' > ~/.ssh/deploy && chmod 600 ~/.ssh/deploy
+          if ! ssh-keygen -y -f ~/.ssh/deploy > /dev/null 2>&1; then
+            echo "::error::O segredo VPS_SSH_KEY não é uma chave válida. Copie de novo o bloco inteiro, do BEGIN ao END."
+            exit 1
+          fi
+          echo "Impressão digital da chave cadastrada no GitHub (não é segredo; compare com a da VPS):"
+          ssh-keygen -lf ~/.ssh/deploy
+          printf '%s\n' "$VPS_KNOWN_HOSTS" | tr -d '\r' > ~/.ssh/known_hosts
+
+      - name: Entrar na VPS
+        env:
+          VPS_HOST: ${{ secrets.VPS_HOST }}
+          VPS_USER: ${{ secrets.VPS_USER }}
+          VPS_PORT: ${{ secrets.VPS_PORT }}
+        run: |
+          if ssh -i ~/.ssh/deploy -p "${VPS_PORT:-22}" -o BatchMode=yes -o ConnectTimeout=20 "$VPS_USER@$VPS_HOST" true 2> "$RUNNER_TEMP/ssh.err"; then
+            echo "Entrou na VPS como $VPS_USER."
+            exit 0
+          fi
+          cat "$RUNNER_TEMP/ssh.err"
+          if grep -qiE "invalid format|libcrypto|load key" "$RUNNER_TEMP/ssh.err"; then
+            msg="A chave em VPS_SSH_KEY está incompleta ou mal colada. Copie de novo o bloco inteiro, do BEGIN ao END."
+          elif grep -qiE "host key verification failed|remote host identification has changed" "$RUNNER_TEMP/ssh.err"; then
+            msg="A identidade da VPS não bate com o segredo VPS_KNOWN_HOSTS. Não publique e confira o servidor."
+          elif grep -qi "permission denied" "$RUNNER_TEMP/ssh.err"; then
+            msg="A VPS recusou a chave. Confira se VPS_USER é maju e se a chave é a do /root/maju_key."
+          elif grep -qiE "timed out|no route|refused|could not resolve|unreachable" "$RUNNER_TEMP/ssh.err"; then
+            msg="Não consegui alcançar a VPS. Confira o VPS_HOST (o IPv4)."
+          else
+            msg="Não consegui entrar na VPS. Veja a mensagem acima."
+          fi
+          echo "::error::$msg"
+          exit 1
+
+      - name: Conferir a pasta do site na VPS
+        env:
+          VPS_HOST: ${{ secrets.VPS_HOST }}
+          VPS_USER: ${{ secrets.VPS_USER }}
+          VPS_PORT: ${{ secrets.VPS_PORT }}
+          VPS_DIR: ${{ secrets.VPS_DIR }}
+        run: |
+          DIR="${VPS_DIR:-/var/www/docinhosmaju}"
+          SSH="ssh -i $HOME/.ssh/deploy -p ${VPS_PORT:-22} -o BatchMode=yes $VPS_USER@$VPS_HOST"
+          if ! $SSH "test -d '$DIR' && test -w '$DIR'"; then
+            echo "::error::A pasta $DIR não existe na VPS ou o usuário $VPS_USER não pode gravar nela."
+            exit 1
+          fi
+          if ! $SSH "command -v rsync" > /dev/null; then
+            echo "::error::A VPS não tem o rsync. No terminal da VPS rode: apt install -y rsync"
+            exit 1
+          fi
+          echo "Pasta do site: $DIR"
+
+      - name: ${{ inputs.modo == 'publicar' && 'Enviar arquivos' || 'Simular envio (nada é alterado)' }}
+        env:
+          VPS_HOST: ${{ secrets.VPS_HOST }}
+          VPS_USER: ${{ secrets.VPS_USER }}
+          VPS_PORT: ${{ secrets.VPS_PORT }}
+          VPS_DIR: ${{ secrets.VPS_DIR }}
+          MODO: ${{ inputs.modo }}
+        run: |
+          DIR="${VPS_DIR:-/var/www/docinhosmaju}"
+          FLAGS="-rlz --checksum --itemize-changes --chmod=D755,F644 --exclude-from=.deployignore"
+          if [ "$MODO" != "publicar" ]; then FLAGS="$FLAGS --dry-run"; echo "SIMULAÇÃO: nada será enviado."; fi
+          echo "Arquivos que mudam (>f = arquivo novo ou alterado, cd = pasta nova). Arquivos iguais não aparecem:"
+          rsync $FLAGS -e "ssh -i ~/.ssh/deploy -p ${VPS_PORT:-22}" ./ "$VPS_USER@$VPS_HOST:$DIR/"
+
+      - name: Limpar chave
+        if: always()
+        run: rm -f ~/.ssh/deploy
