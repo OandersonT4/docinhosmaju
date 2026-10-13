@@ -1,0 +1,159 @@
+/* Doce Maju · paleta e fontes do briefing da marca */
+:root {
+  --violeta: #5B5BD6;
+  --rosa: #F49AC1;
+  --roxo: #2B2552;
+  --lilas: #F4F0FD;
+  --linha: #E1D9F7;
+  --rosa-claro: #FBE3EE;
+  --lilas-logo: #D9C8EC;
+  --apoio: #6E6699;
+  --titulo: "Poppins", system-ui, sans-serif;
+  --destaque: "Lora", Georgia, serif;
+  --script: "Pacifico", cursive;
+}
+
+* { box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+body {
+  margin: 0;
+  font-family: var(--titulo);
+  font-weight: 500;
+  color: var(--roxo);
+  background: var(--lilas);
+  line-height: 1.5;
+}
+img { max-width: 100%; display: block; }
+a { color: inherit; }
+
+.faixa { width: min(1100px, 100% - 32px); margin-inline: auto; }
+
+h1, h2, h3 { font-weight: 800; letter-spacing: -0.03em; line-height: 1.08; margin: 0 0 16px; }
+h1 { font-size: clamp(2.2rem, 6vw, 3.8rem); }
+h2 { font-size: clamp(1.8rem, 4.5vw, 2.8rem); }
+h3 { font-size: 1.4rem; }
+em { font-family: var(--destaque); font-style: italic; font-weight: 600; color: var(--violeta); letter-spacing: 0; }
+
+.rotulo {
+  margin: 0 0 8px;
+  font-size: .78rem;
+  font-weight: 700;
+  letter-spacing: .14em;
+  text-transform: uppercase;
+  color: var(--violeta);
+}
+.apoio { color: var(--apoio); font-size: 1.08rem; max-width: 34em; }
+
+/* Botões */
+.botao {
+  display: inline-block;
+  padding: 14px 24px;
+  border-radius: 999px;
+  background: var(--violeta);
+  color: #fff;
+  font-weight: 700;
+  text-decoration: none;
+  transition: transform .15s, box-shadow .15s;
+}
+.botao:hover { transform: translateY(-2px); box-shadow: 0 8px 20px rgba(91, 91, 214, .3); }
+.botao-pequeno { padding: 9px 18px; font-size: .9rem; }
+.botao-contorno { background: transparent; color: var(--violeta); box-shadow: inset 0 0 0 2px var(--violeta); }
+.botao-rosa { background: var(--rosa); color: var(--roxo); }
+
+/* Topo */
+.topo {
+  position: sticky; top: 0; z-index: 10;
+  background: rgba(244, 240, 253, .92);
+  backdrop-filter: blur(8px);
+  border-bottom: 1px solid var(--linha);
+}
+.topo .faixa { display: flex; align-items: center; gap: 16px; padding-block: 12px; }
+.marca { font-family: var(--script); font-size: 1.6rem; color: var(--violeta); text-decoration: none; margin: 0; }
+.menu { margin-left: auto; display: flex; gap: 20px; }
+.menu a { text-decoration: none; font-weight: 700; font-size: .95rem; }
+.menu a:hover { color: var(--violeta); }
+
+/* Capa */
+.capa { padding: 56px 0 72px; overflow: hidden; }
+.capa-grade { display: grid; grid-template-columns: 1.2fr 1fr; gap: 40px; align-items: center; }
+.acoes { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 28px; }
+.capa-foto { display: flex; justify-content: center; }
+
+/* Fotos (lugar reservado até chegarem as fotos reais) */
+.foto {
+  aspect-ratio: 4 / 3;
+  border-radius: 20px;
+  background: var(--lilas-logo);
+  display: grid; place-items: center;
+  overflow: hidden;
+  margin-bottom: 20px;
+}
+.foto span { font-size: 4rem; }
+.foto img { width: 100%; height: 100%; object-fit: cover; }
+.foto-redonda {
+  width: min(360px, 80vw);
+  aspect-ratio: 1;
+  border-radius: 50%;
+  box-shadow: 0 30px 60px rgba(43, 37, 82, .18);
+}
+.foto-redonda img { width: 62%; height: auto; object-fit: contain; }
+
+/* Seções */
+.secao { padding: 72px 0; }
+.secao-marca { background: var(--violeta); color: #fff; text-align: center; }
+.secao-marca .rotulo { color: #FFD6E8; }
+.secao-marca em { color: #FFD6E8; }
+.secao-marca .apoio { color: #D9D8FA; margin-inline: auto; }
+
+/* Cardápio */
+.cartoes { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 20px; margin-top: 32px; }
+.cartao { border-radius: 24px; padding: 20px 20px 24px; display: flex; flex-direction: column; }
+.cartao ul { padding-left: 20px; margin: 0 0 20px; flex: 1; }
+.cartao li { margin-bottom: 4px; }
+.cartao .botao { align-self: flex-start; }
+.cartao-claro { background: #fff; border: 1px solid var(--linha); }
+.cartao-rosa { background: var(--rosa-claro); }
+.cartao-rosa .foto { background: #F7C9DD; }
+.cartao-escuro { background: var(--roxo); color: #fff; }
+.cartao-escuro .foto { background: #3B3470; }
+.cartao-escuro .rotulo, .cartao-escuro em { color: var(--rosa); }
+
+/* Como pedir */
+.passos { list-style: none; padding: 0; margin: 32px 0; display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 16px; }
+.passos li { background: #fff; border: 1px solid var(--linha); border-radius: 20px; padding: 20px; display: flex; gap: 14px; align-items: center; font-weight: 700; }
+.passos strong {
+  flex: none; width: 42px; height: 42px; border-radius: 50%;
+  display: grid; place-items: center;
+  background: var(--violeta); color: #fff;
+}
+.contato {
+  background: var(--rosa-claro);
+  border-radius: 24px; padding: 24px 28px;
+  display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 16px;
+}
+.contato .rotulo { margin: 0; }
+.numero { margin: 0; font-size: 1.8rem; font-weight: 800; letter-spacing: -0.02em; }
+
+/* Rodapé */
+.rodape { background: var(--roxo); color: #B9B1DD; padding: 32px 0 96px; }
+.rodape-grade { display: flex; flex-wrap: wrap; justify-content: space-between; align-items: center; gap: 12px; }
+.rodape .marca { color: #fff; }
+.rodape a { color: #fff; }
+
+/* Botão flutuante do WhatsApp */
+.flutuante {
+  position: fixed; right: 18px; bottom: 18px; z-index: 20;
+  width: 58px; height: 58px; border-radius: 50%;
+  display: grid; place-items: center;
+  background: #25D366; color: #fff;
+  box-shadow: 0 10px 24px rgba(0, 0, 0, .2);
+}
+
+@media (max-width: 760px) {
+  .capa { padding-top: 32px; }
+  .capa-grade { grid-template-columns: 1fr; }
+  .capa-foto { order: -1; }
+  .menu { display: none; }
+  .topo .botao-pequeno { margin-left: auto; }
+  .secao { padding: 56px 0; }
+}
