@@ -9,142 +9,115 @@
   <link rel="canonical" href="https://docinhosmaju.com.br/">
   <meta property="og:type" content="website">
   <meta property="og:title" content="Doce Maju | Doces artesanais">
-  <meta property="og:description" content="Bolos de fatia, brigadeiros, tortinhas e geladinhos. Encomendas pelo WhatsApp.">
+  <meta property="og:description" content="Bolos de fatia, brigadeiros, tortinhas e geladinhos artesanais. Encomendas pelo WhatsApp.">
   <meta property="og:url" content="https://docinhosmaju.com.br/">
-  <link rel="icon" href="assets/img/favicon.svg" type="image/svg+xml">
+  <link rel="icon" href="/assets/img/favicon.svg" type="image/svg+xml">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@1,600&family=Pacifico&family=Poppins:wght@500;700;800&display=swap">
-  <link rel="stylesheet" href="assets/estilo.css">
+  <link rel="stylesheet" href="/assets/estilo.css">
 </head>
 <body>
 
 <header class="topo">
-  <div class="faixa">
-    <a class="marca" href="#inicio" aria-label="Doce Maju, início">Doce Maju</a>
-    <nav class="menu" aria-label="Seções">
-      <a href="#cardapio">Cardápio</a>
-      <a href="#como-pedir">Como pedir</a>
+  <div class="faixa topo-linha">
+    <a class="marca" href="/" aria-label="Doce Maju, início">Doce Maju</a>
+    <nav class="abas" aria-label="Páginas">
+        <a class="aba" href="/" aria-current="page">Início</a>
+        <a class="aba" href="/cardapio/">Cardápio</a>
+        <a class="aba" href="/como-pedir/">Como pedir</a>
     </nav>
-    <a class="botao botao-pequeno" href="https://wa.me/5537998765591?text=Oi%20Maju!%20Vim%20pelo%20site%20e%20quero%20fazer%20uma%20encomenda." target="_blank" rel="noopener">WhatsApp</a>
+    <a class="botao botao-pequeno" href="https://wa.me/5537998765591?text=Oi%20Maju%21%20Vim%20pelo%20site%20e%20quero%20fazer%20uma%20encomenda." target="_blank" rel="noopener">WhatsApp</a>
   </div>
 </header>
 
-<main id="inicio">
+<main>
 
-  <!-- CAPA -->
   <section class="capa">
     <div class="faixa capa-grade">
-      <div class="capa-texto">
+      <div>
         <p class="rotulo">Doces artesanais</p>
         <h1>4 jeitos de matar a <em>vontade de doce.</em></h1>
         <p class="apoio">Bolo de fatia no potinho, caixinha de brigadeiros, tortinha individual e geladinho cremoso. Feitos pela Maju, sob encomenda.</p>
         <div class="acoes">
-          <a class="botao" href="https://wa.me/5537998765591?text=Oi%20Maju!%20Vim%20pelo%20site%20e%20quero%20fazer%20uma%20encomenda." target="_blank" rel="noopener">Peça pelo WhatsApp →</a>
-          <a class="botao botao-contorno" href="#cardapio">Ver o cardápio</a>
+          <a class="botao" href="/cardapio/">Montar meu pedido →</a>
+          <a class="botao botao-contorno" href="/como-pedir/">Como funciona</a>
         </div>
       </div>
-      <!-- FOTO: troque pelo <img src="assets/img/capa.jpg" alt="..."> quando tiver a foto -->
+      <!-- FOTO DA CAPA: troque a coruja pela logo/foto real quando chegar -->
       <div class="capa-foto">
-        <div class="foto foto-redonda" role="img" aria-label="Logo da Doce Maju">
-          <img src="assets/img/coruja.svg" alt="" width="220" height="220">
+        <div class="foto foto-redonda" role="img" aria-label="Corujinha da Doce Maju">
+          <img src="/assets/img/coruja.svg" alt="" width="220" height="220">
         </div>
       </div>
     </div>
   </section>
 
-  <!-- CARDÁPIO -->
-  <section id="cardapio" class="secao">
+  <section class="secao secao-branca">
     <div class="faixa">
       <p class="rotulo">Cardápio</p>
       <h2>Escolhe o seu <em>(ou todos).</em></h2>
-
-      <div class="cartoes">
-
+      <div class="grade-cartoes">
         <article class="cartao cartao-claro">
-          <!-- FOTO: assets/img/bolos.jpg -->
-          <div class="foto" role="img" aria-label="Foto dos bolos de fatia"><span>🍰</span></div>
+          <!-- FOTO: quando chegar, troque o <span> por <img src="/assets/img/bolos.jpg" alt="Bolo de fatia no potinho"> -->
+          <div class="foto" role="img" aria-label="Foto: Bolo de fatia no potinho"><span>🍰</span></div>
           <p class="rotulo">Bolos</p>
           <h3>Bolo de fatia <em>no potinho</em></h3>
-          <ul>
-            <li>Chocolate com maracujá</li>
-            <li>Ninho com maracujá</li>
-            <li>Chocolate puro</li>
-            <li>Ninho puro</li>
-            <li>Ninho com chocolate</li>
-          </ul>
-          <a class="botao" href="https://wa.me/5537998765591?text=Oi%20Maju!%20Quero%20encomendar%20bolo%20de%20fatia." target="_blank" rel="noopener">Pedir bolo →</a>
+          <p class="preco"><span class="preco-grande">R$ 12</span> <span class="preco-nota">o potinho</span></p>
+          <a class="botao" href="/cardapio/#bolos">Ver sabores →</a>
         </article>
-
         <article class="cartao cartao-rosa">
-          <!-- FOTO: assets/img/brigadeiros.jpg -->
-          <div class="foto" role="img" aria-label="Foto da caixinha de brigadeiros"><span>🍫</span></div>
+          <!-- FOTO: quando chegar, troque o <span> por <img src="/assets/img/brigadeiros.jpg" alt="Caixinha com 4 brigadeiros"> -->
+          <div class="foto" role="img" aria-label="Foto: Caixinha com 4 brigadeiros"><span>🍫</span></div>
           <p class="rotulo">Brigadeiros</p>
           <h3>Caixinha com <em>4 brigadeiros</em></h3>
-          <ul>
-            <li>Dois de chocolate</li>
-            <li>Um de morango</li>
-            <li>Um de chocolate branco</li>
-          </ul>
-          <a class="botao" href="https://wa.me/5537998765591?text=Oi%20Maju!%20Quero%20encomendar%20caixinha%20de%20brigadeiros." target="_blank" rel="noopener">Pedir caixinha →</a>
+          <p class="preco"><span class="preco-grande">R$ 12</span> <span class="preco-nota">a caixinha</span></p>
+          <a class="botao" href="/cardapio/#brigadeiros">Ver sabores →</a>
         </article>
-
         <article class="cartao cartao-claro">
-          <!-- FOTO: assets/img/tortas.jpg -->
-          <div class="foto" role="img" aria-label="Foto das tortinhas"><span>🥧</span></div>
+          <!-- FOTO: quando chegar, troque o <span> por <img src="/assets/img/tortas.jpg" alt="Tortinha individual"> -->
+          <div class="foto" role="img" aria-label="Foto: Tortinha individual"><span>🥧</span></div>
           <p class="rotulo">Tortas</p>
           <h3>Tortinha <em>individual</em></h3>
-          <ul>
-            <li>Limão</li>
-            <li>Maracujá</li>
-          </ul>
-          <a class="botao" href="https://wa.me/5537998765591?text=Oi%20Maju!%20Quero%20encomendar%20tortinha." target="_blank" rel="noopener">Pedir tortinha →</a>
+          <p class="preco"><span class="preco-grande">R$ 10</span> <span class="preco-nota">a tortinha</span></p>
+          <a class="botao" href="/cardapio/#tortas">Ver sabores →</a>
         </article>
-
         <article class="cartao cartao-escuro">
-          <!-- FOTO: assets/img/geladinhos.jpg -->
-          <div class="foto" role="img" aria-label="Foto dos geladinhos"><span>🍧</span></div>
+          <!-- FOTO: quando chegar, troque o <span> por <img src="/assets/img/geladinhos.jpg" alt="Geladinho cremoso"> -->
+          <div class="foto" role="img" aria-label="Foto: Geladinho cremoso"><span>🍧</span></div>
           <p class="rotulo">Geladinhos</p>
           <h3>Geladinho <em>cremoso</em></h3>
-          <ul>
-            <li>Chocolate</li>
-            <li>Morango</li>
-            <li>Maracujá</li>
-            <li>Pedacinho do céu</li>
-          </ul>
-          <a class="botao botao-rosa" href="https://wa.me/5537998765591?text=Oi%20Maju!%20Quero%20encomendar%20geladinhos." target="_blank" rel="noopener">Pedir geladinho →</a>
+          <p class="preco"><span class="preco-grande">R$ 5</span> <span class="preco-nota">cada</span></p>
+          <a class="botao botao-rosa" href="/cardapio/#geladinhos">Ver sabores →</a>
         </article>
-
       </div>
     </div>
   </section>
 
-  <!-- FÃ DE MARACUJÁ -->
   <section class="secao secao-marca">
-    <div class="faixa destaque">
+    <div class="faixa">
       <p class="rotulo">Pra quem é fã</p>
       <h2>Maracujá? <em>Tem em quatro lugares.</em></h2>
       <p class="apoio">Bolo de chocolate com maracujá, bolo de ninho com maracujá, tortinha e geladinho.</p>
+      <div class="acoes" style="justify-content:center"><a class="botao botao-rosa" href="/cardapio/">Ver o cardápio →</a></div>
     </div>
   </section>
 
-  <!-- COMO PEDIR -->
-  <section id="como-pedir" class="secao">
+  <section class="secao">
     <div class="faixa">
       <p class="rotulo">Como pedir</p>
       <h2>Escolheu? <em>Chama a Maju.</em></h2>
       <ol class="passos">
-        <li><strong>1</strong><span>Manda no WhatsApp o que você quer.</span></li>
+        <li><strong>1</strong><span>Monta o pedido no cardápio ou manda no WhatsApp.</span></li>
         <li><strong>2</strong><span>Combina o dia e o horário.</span></li>
         <li><strong>3</strong><span>Pronto, é só aproveitar.</span></li>
       </ol>
-      <!-- PENDENTE: entrega ou retirada, formas de pagamento e cidade (confirmar com a Maju antes de colocar aqui) -->
       <div class="contato">
         <div>
           <p class="rotulo">Encomendas pelo WhatsApp</p>
           <p class="numero">37 99876-5591</p>
         </div>
-        <a class="botao" href="https://wa.me/5537998765591?text=Oi%20Maju!%20Vim%20pelo%20site%20e%20quero%20fazer%20uma%20encomenda." target="_blank" rel="noopener">Peça pelo WhatsApp →</a>
+        <a class="botao" href="https://wa.me/5537998765591?text=Oi%20Maju%21%20Vim%20pelo%20site%20e%20quero%20fazer%20uma%20encomenda." target="_blank" rel="noopener">Peça pelo WhatsApp →</a>
       </div>
     </div>
   </section>
@@ -161,7 +134,7 @@
   </div>
 </footer>
 
-<a class="flutuante" href="https://wa.me/5537998765591?text=Oi%20Maju!%20Vim%20pelo%20site%20e%20quero%20fazer%20uma%20encomenda." target="_blank" rel="noopener" aria-label="Pedir pelo WhatsApp">
+<a class="flutuante" href="https://wa.me/5537998765591?text=Oi%20Maju%21%20Vim%20pelo%20site%20e%20quero%20fazer%20uma%20encomenda." target="_blank" rel="noopener" aria-label="Pedir pelo WhatsApp">
   <svg viewBox="0 0 24 24" width="28" height="28" aria-hidden="true"><path fill="currentColor" d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2zm0 18.2a8.2 8.2 0 0 1-4.2-1.2l-.3-.2-3 .8.8-2.9-.2-.3A8.2 8.2 0 1 1 12 20.2zm4.5-6.1c-.2-.1-1.5-.7-1.7-.8s-.4-.1-.6.1-.7.8-.8 1-.3.2-.5.1a6.7 6.7 0 0 1-3.3-2.9c-.3-.4.3-.4.7-1.3.1-.2 0-.3 0-.4l-.8-1.8c-.2-.5-.4-.4-.6-.4h-.5a1 1 0 0 0-.7.3 3 3 0 0 0-.9 2.2 5.2 5.2 0 0 0 1.1 2.7 11.8 11.8 0 0 0 4.5 4c1.7.7 2.3.8 3.2.6a2.6 2.6 0 0 0 1.7-1.2 2.1 2.1 0 0 0 .1-1.2c0-.1-.2-.2-.4-.3z"/></svg>
 </a>
 
