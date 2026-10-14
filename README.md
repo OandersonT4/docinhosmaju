@@ -16,9 +16,17 @@ Para mudar um preço, troque nas 3 páginas (o `data-preco` do cardápio é o qu
 
 Tudo em `assets/estilo.css`: os tokens ficam no começo (`--cor-*`, `--t-*`, `--e-*`, `--r-*`) e os componentes logo abaixo (`.botao`, `.cartao-claro|rosa|escuro`, `.aba`, `.preco`, `.selo`, `.item` + `.contador`, `.passos`, `.contato`). Use sempre as classes e os tokens em vez de cores soltas.
 
-## Fotos
+## Fotos e logo
 
-Os lugares das fotos estão marcados com `<!-- FOTO: ... -->` no HTML. Coloque as imagens em `assets/img/` (`bolos.jpg`, `brigadeiros.jpg`, `tortas.jpg`, `geladinhos.jpg`) e troque o `<span>` com o emoji pela `<img>`.
+Tudo em `assets/img/`, tirado das artes finais do Instagram (padrão com luva preta):
+
+- `bolos.jpg`, `brigadeiros.jpg`, `tortas.jpg`, `geladinhos.jpg`: fotos dos cartões (960x720, recorte só do produto, sem texto).
+- `instagram/*.jpg`: 8 posts do feed na galeria "No Instagram" do Início (560x700), com link para @docinhoss_maju.
+- `logo-coruja.png`: logo oficial (corujinha + nome, fundo transparente) na capa.
+- `logo.png`, `logo-pequena.png`: logo no círculo lilás (a pequena vai no topo, ao lado do nome).
+- `favicon.png`, `apple-touch-icon.png`, `og.jpg`: ícone da aba, ícone do celular e imagem de compartilhamento (WhatsApp, Facebook).
+
+Para trocar uma foto, salve com o mesmo nome e tamanho.
 
 ## Publicar
 
@@ -30,4 +38,3 @@ Os lugares das fotos estão marcados com `<!-- FOTO: ... -->` no HTML. Coloque a
 ## Pendências da Maju
 
 - Cidade, entrega ou retirada e formas de pagamento (não aparecem no site até ela confirmar).
-- Fotos dos produtos e logo oficial (a corujinha em `assets/img/coruja.svg` é provisória).

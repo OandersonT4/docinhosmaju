@@ -11,7 +11,9 @@
   <meta property="og:title" content="Doce Maju | Doces artesanais">
   <meta property="og:description" content="Bolos de fatia, brigadeiros, tortinhas e geladinhos artesanais. Encomendas pelo WhatsApp.">
   <meta property="og:url" content="https://docinhosmaju.com.br/">
-  <link rel="icon" href="/assets/img/favicon.svg" type="image/svg+xml">
+  <link rel="icon" href="/assets/img/favicon.png" type="image/png">
+  <link rel="apple-touch-icon" href="/assets/img/apple-touch-icon.png">
+  <meta property="og:image" content="https://docinhosmaju.com.br/assets/img/og.jpg">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@1,600&family=Pacifico&family=Poppins:wght@500;700;800&display=swap">
@@ -21,7 +23,7 @@
 
 <header class="topo">
   <div class="faixa topo-linha">
-    <a class="marca" href="/" aria-label="Doce Maju, início">Doce Maju</a>
+    <a class="marca" href="/" aria-label="Doce Maju, início"><img src="/assets/img/logo-pequena.png" alt="" width="40" height="40">Doce Maju</a>
     <nav class="abas" aria-label="Páginas">
         <a class="aba" href="/" aria-current="page">Início</a>
         <a class="aba" href="/cardapio/">Cardápio</a>
@@ -44,10 +46,9 @@
           <a class="botao botao-contorno" href="/como-pedir/">Como funciona</a>
         </div>
       </div>
-      <!-- FOTO DA CAPA: troque a coruja pela logo/foto real quando chegar -->
       <div class="capa-foto">
-        <div class="foto foto-redonda" role="img" aria-label="Corujinha da Doce Maju">
-          <img src="/assets/img/coruja.svg" alt="" width="220" height="220">
+        <div class="foto foto-redonda">
+          <img src="/assets/img/logo-coruja.png" alt="Logo da Doce Maju: a corujinha confeiteira com um cookie" width="520" height="520">
         </div>
       </div>
     </div>
@@ -59,32 +60,28 @@
       <h2>Escolhe o seu <em>(ou todos).</em></h2>
       <div class="grade-cartoes">
         <article class="cartao cartao-claro">
-          <!-- FOTO: quando chegar, troque o <span> por <img src="/assets/img/bolos.jpg" alt="Bolo de fatia no potinho"> -->
-          <div class="foto" role="img" aria-label="Foto: Bolo de fatia no potinho"><span>🍰</span></div>
+          <div class="foto"><img src="/assets/img/bolos.jpg" alt="Bolo de fatia de chocolate no potinho" width="960" height="720" loading="lazy"></div>
           <p class="rotulo">Bolos</p>
           <h3>Bolo de fatia <em>no potinho</em></h3>
           <p class="preco"><span class="preco-grande">R$ 12</span> <span class="preco-nota">o potinho</span></p>
           <a class="botao" href="/cardapio/#bolos">Ver sabores →</a>
         </article>
         <article class="cartao cartao-rosa">
-          <!-- FOTO: quando chegar, troque o <span> por <img src="/assets/img/brigadeiros.jpg" alt="Caixinha com 4 brigadeiros"> -->
-          <div class="foto" role="img" aria-label="Foto: Caixinha com 4 brigadeiros"><span>🍫</span></div>
+          <div class="foto"><img src="/assets/img/brigadeiros.jpg" alt="Caixinha com 4 brigadeiros com a corujinha na tampa" width="960" height="720" loading="lazy"></div>
           <p class="rotulo">Brigadeiros</p>
           <h3>Caixinha com <em>4 brigadeiros</em></h3>
           <p class="preco"><span class="preco-grande">R$ 12</span> <span class="preco-nota">a caixinha</span></p>
           <a class="botao" href="/cardapio/#brigadeiros">Ver sabores →</a>
         </article>
         <article class="cartao cartao-claro">
-          <!-- FOTO: quando chegar, troque o <span> por <img src="/assets/img/tortas.jpg" alt="Tortinha individual"> -->
-          <div class="foto" role="img" aria-label="Foto: Tortinha individual"><span>🥧</span></div>
+          <div class="foto"><img src="/assets/img/tortas.jpg" alt="Tortinha de limão no pote redondo" width="960" height="720" loading="lazy"></div>
           <p class="rotulo">Tortas</p>
           <h3>Tortinha <em>individual</em></h3>
           <p class="preco"><span class="preco-grande">R$ 10</span> <span class="preco-nota">a tortinha</span></p>
           <a class="botao" href="/cardapio/#tortas">Ver sabores →</a>
         </article>
         <article class="cartao cartao-escuro">
-          <!-- FOTO: quando chegar, troque o <span> por <img src="/assets/img/geladinhos.jpg" alt="Geladinho cremoso"> -->
-          <div class="foto" role="img" aria-label="Foto: Geladinho cremoso"><span>🍧</span></div>
+          <div class="foto"><img src="/assets/img/geladinhos.jpg" alt="Geladinhos de morango, maracujá, chocolate e pedacinho do céu" width="960" height="720" loading="lazy"></div>
           <p class="rotulo">Geladinhos</p>
           <h3>Geladinho <em>cremoso</em></h3>
           <p class="preco"><span class="preco-grande">R$ 5</span> <span class="preco-nota">cada</span></p>
@@ -100,6 +97,25 @@
       <h2>Maracujá? <em>Tem em quatro lugares.</em></h2>
       <p class="apoio">Bolo de chocolate com maracujá, bolo de ninho com maracujá, tortinha e geladinho.</p>
       <div class="acoes" style="justify-content:center"><a class="botao botao-rosa" href="/cardapio/">Ver o cardápio →</a></div>
+    </div>
+  </section>
+
+  <section class="secao secao-branca">
+    <div class="faixa">
+      <p class="rotulo">No Instagram</p>
+      <h2>Segue a <em>corujinha.</em></h2>
+      <p class="apoio">Sabor novo, bastidor e os doces da semana aparecem primeiro no @docinhoss_maju.</p>
+      <ul class="galeria">
+        <li><a href="https://instagram.com/docinhoss_maju" target="_blank" rel="noopener"><img src="/assets/img/instagram/quatro-vontades.jpg" alt="Post: quatro vontades, uma caixinha de brigadeiros" width="560" height="700" loading="lazy"></a></li>
+        <li><a href="https://instagram.com/docinhoss_maju" target="_blank" rel="noopener"><img src="/assets/img/instagram/chocolate-em-cima.jpg" alt="Post: bolo de fatia, chocolate em cima e chocolate embaixo" width="560" height="700" loading="lazy"></a></li>
+        <li><a href="https://instagram.com/docinhoss_maju" target="_blank" rel="noopener"><img src="/assets/img/instagram/chocolate-com-maracuja.jpg" alt="Post: bolo de chocolate com maracujá" width="560" height="700" loading="lazy"></a></li>
+        <li><a href="https://instagram.com/docinhoss_maju" target="_blank" rel="noopener"><img src="/assets/img/instagram/ninho-puro.jpg" alt="Post: bolo de fatia ninho puro, sem invenção" width="560" height="700" loading="lazy"></a></li>
+        <li><a href="https://instagram.com/docinhoss_maju" target="_blank" rel="noopener"><img src="/assets/img/instagram/geladinhos_escolhe-o-sabor.jpg" alt="Post: geladinhos, escolhe o sabor e pronto" width="560" height="700" loading="lazy"></a></li>
+        <li><a href="https://instagram.com/docinhoss_maju" target="_blank" rel="noopener"><img src="/assets/img/instagram/torta-limao_base-de-biscoito.jpg" alt="Post: tortinha de limão com base de biscoito" width="560" height="700" loading="lazy"></a></li>
+        <li><a href="https://instagram.com/docinhoss_maju" target="_blank" rel="noopener"><img src="/assets/img/instagram/dia-de-chuva.jpg" alt="Post: chovendo lá fora, doce aqui dentro" width="560" height="700" loading="lazy"></a></li>
+        <li><a href="https://instagram.com/docinhoss_maju" target="_blank" rel="noopener"><img src="/assets/img/instagram/sextou.jpg" alt="Post: sextou com doce" width="560" height="700" loading="lazy"></a></li>
+      </ul>
+      <div class="acoes"><a class="botao botao-contorno" href="https://instagram.com/docinhoss_maju" target="_blank" rel="noopener">Seguir @docinhoss_maju →</a></div>
     </div>
   </section>
 
