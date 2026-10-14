@@ -200,6 +200,7 @@ em { font-family: var(--fonte-destaque); font-style: italic; font-weight: 600; c
   box-shadow: 0 -10px 30px rgba(43, 37, 82, .25);
   transform: translateY(110%); transition: transform .25s;
 }
+.barra-pedido:not(.visivel) { visibility: hidden; }
 .barra-pedido.visivel { transform: none; }
 .barra-pedido .faixa { display: flex; align-items: center; justify-content: space-between; gap: var(--e-4); padding-block: 14px; }
 .barra-pedido .resumo { margin: 0; color: var(--apoio-escuro); font-size: var(--t-pequeno); }
@@ -272,9 +273,58 @@ em { font-family: var(--fonte-destaque); font-style: italic; font-weight: 600; c
 /* preço dentro de um item (tabela de preços) */
 .item > .preco { flex: none; flex-direction: column; align-items: flex-end; gap: 0; line-height: 1.2; white-space: nowrap; }
 
-/* galeria do Instagram (artes do feed) */
-.galeria { list-style: none; padding: 0; margin: var(--e-6) 0 0; display: grid; grid-template-columns: repeat(4, 1fr); gap: var(--e-3); }
-.galeria a { display: block; border-radius: var(--r-medio); overflow: hidden; box-shadow: var(--sombra-leve); transition: transform .15s, box-shadow .15s; }
-.galeria a:hover { transform: translateY(-3px); box-shadow: var(--sombra-media); }
-.galeria img { width: 100%; height: auto; aspect-ratio: 4 / 5; object-fit: cover; }
-@media (max-width: 760px) { .galeria { grid-template-columns: repeat(2, 1fr); } }
+/* grade dos 4 produtos (Início e Cardápio): mesmo tamanho e botão sempre no fim do cartão */
+.grade-produtos { display: grid; grid-template-columns: repeat(4, 1fr); gap: 20px; margin-top: var(--e-6); }
+.produto { gap: var(--e-2); }
+.produto .foto { margin-bottom: var(--e-2); }
+.produto h3 { font-size: 1.25rem; min-height: 2.2em; }
+.produto .preco { margin: 0 0 var(--e-4); }
+.produto .botao { margin-top: auto; align-self: stretch; }
+
+/* página de cada doce: foto, título e os sabores para escolher */
+.categoria-topo { display: grid; grid-template-columns: 1.1fr 1fr; gap: 40px; align-items: center; }
+.categoria-topo .foto { box-shadow: var(--sombra-media); }
+.categoria-topo .preco { margin: var(--e-4) 0 0; }
+.sabores { list-style: none; padding: 0; margin: var(--e-5) 0 0; display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 16px; }
+.sabor {
+  background: var(--cor-branco); border: 1px solid var(--cor-linha); border-radius: var(--r-medio);
+  padding: 18px 16px 18px 22px; min-height: 116px;
+}
+.sabor h3 { font-size: 1.15rem; margin: 0 0 4px; }
+.sabor .preco { font-size: var(--t-pequeno); white-space: nowrap; }
+.sabor-nota { margin: 0 0 6px; color: var(--apoio-claro); font-size: var(--t-pequeno); font-weight: 500; }
+.continua { margin-top: var(--e-7); }
+.continua .abas { flex-wrap: wrap; }
+.continua .aba { background: var(--cor-branco); border: 1px solid var(--cor-linha); }
+.continua .aba:hover { background: var(--cor-linha); }
+
+/* barra do pedido: limpar + enviar */
+.barra-acoes { display: flex; align-items: center; gap: var(--e-4); }
+.barra-limpar { background: transparent; border: 0; padding: 8px; color: var(--apoio-escuro); font: 700 var(--t-pequeno) var(--fonte-texto); text-decoration: underline; cursor: pointer; }
+
+/* Instagram: só o convite para seguir */
+.instagram { display: flex; align-items: center; gap: 40px; }
+.instagram > img { width: 190px; height: auto; flex: none; }
+.instagram h2 { margin-bottom: var(--e-3); }
+.instagram .botao { margin-top: var(--e-4); }
+
+@media (max-width: 900px) {
+  .grade-produtos { grid-template-columns: repeat(2, 1fr); gap: 12px; }
+  .produto { padding: 12px 12px 14px; border-radius: var(--r-medio); }
+  .produto .foto { border-radius: var(--r-pequeno); }
+  .produto .rotulo { font-size: .68rem; margin-bottom: 0; }
+  .produto h3 { font-size: 1rem; }
+  .produto .preco-grande { font-size: 1.3rem; }
+  .produto .preco-nota { font-size: .78rem; }
+  .produto .preco { margin-bottom: var(--e-3); flex-wrap: wrap; }
+  .produto .botao { padding: 10px 12px; font-size: .85rem; }
+}
+@media (max-width: 760px) {
+  .categoria-topo { grid-template-columns: 1fr; gap: 24px; }
+  .categoria-topo .foto { order: -1; }
+  .barra-acoes { width: 100%; }
+  .barra-acoes .botao { flex: 1; }
+  .instagram { flex-direction: column; text-align: center; gap: 20px; }
+  .instagram > img { width: 150px; }
+  .instagram .apoio { margin-inline: auto; }
+}
