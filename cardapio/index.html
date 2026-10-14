@@ -26,7 +26,10 @@
     <a class="marca" href="/" aria-label="Doce Maju, início"><img src="/assets/img/logo-pequena.png" alt="" width="40" height="40">Doce Maju</a>
     <nav class="abas" aria-label="Páginas">
         <a class="aba" href="/">Início</a>
-        <a class="aba" href="/cardapio/" aria-current="page">Cardápio</a>
+        <a class="aba" href="/bolos/">Bolos</a>
+        <a class="aba" href="/brigadeiros/">Brigadeiros</a>
+        <a class="aba" href="/tortas/">Tortas</a>
+        <a class="aba" href="/geladinhos/">Geladinhos</a>
         <a class="aba" href="/como-pedir/">Como pedir</a>
     </nav>
     <a class="botao botao-pequeno" href="https://wa.me/5537998765591?text=Oi%20Maju%21%20Vim%20pelo%20site%20e%20quero%20fazer%20uma%20encomenda." target="_blank" rel="noopener">WhatsApp</a>
@@ -38,166 +41,45 @@
   <section class="secao-topo">
     <div class="faixa">
       <p class="rotulo">Cardápio</p>
-      <h1>Monta o seu <em>pedido.</em></h1>
-      <p class="apoio">Escolhe os sabores e as quantidades. No fim, o pedido vai prontinho pro WhatsApp da Maju.</p>
+      <h1>Escolhe o seu <em>(ou todos).</em></h1>
+      <p class="apoio">Abre o doce que você quer, escolhe os sabores e envia o pedido prontinho pro WhatsApp da Maju.</p>
     </div>
   </section>
 
-  <div class="filtros">
-    <nav class="faixa abas" aria-label="Categorias">
-        <a class="aba" href="#bolos">Bolos</a>
-        <a class="aba" href="#brigadeiros">Brigadeiros</a>
-        <a class="aba" href="#tortas">Tortas</a>
-        <a class="aba" href="#geladinhos">Geladinhos</a>
-    </nav>
-  </div>
-
-  <section class="secao" style="padding-top:16px">
-    <div class="faixa grade-cardapio">
-        <article class="cartao cartao-claro" id="bolos">
+  <section class="secao" style="padding-top:8px">
+    <div class="faixa">
+      <div class="grade-produtos">
+        <article class="cartao cartao-claro produto">
           <div class="foto"><img src="/assets/img/bolos.jpg" alt="Bolo de fatia de chocolate no potinho" width="960" height="720" loading="lazy"></div>
           <p class="rotulo">Bolos</p>
           <h3>Bolo de fatia <em>no potinho</em></h3>
           <p class="preco"><span class="preco-grande">R$ 12</span> <span class="preco-nota">o potinho</span></p>
-          <p class="apoio" style="margin:0">Fatia generosa no potinho quadrado com tampa.</p>
-          <ul class="itens">
-            <li class="item" data-nome="Bolo de fatia chocolate com maracujá" data-preco="12">
-              <span>Chocolate com maracujá</span>
-              <span class="contador">
-                <button type="button" data-menos aria-label="Tirar 1 Bolo de fatia chocolate com maracujá">−</button>
-                <output aria-live="polite">0</output>
-                <button type="button" data-mais aria-label="Pôr 1 Bolo de fatia chocolate com maracujá">+</button>
-              </span>
-            </li>
-            <li class="item" data-nome="Bolo de fatia ninho com maracujá" data-preco="12">
-              <span>Ninho com maracujá</span>
-              <span class="contador">
-                <button type="button" data-menos aria-label="Tirar 1 Bolo de fatia ninho com maracujá">−</button>
-                <output aria-live="polite">0</output>
-                <button type="button" data-mais aria-label="Pôr 1 Bolo de fatia ninho com maracujá">+</button>
-              </span>
-            </li>
-            <li class="item" data-nome="Bolo de fatia chocolate puro" data-preco="12">
-              <span>Chocolate puro</span>
-              <span class="contador">
-                <button type="button" data-menos aria-label="Tirar 1 Bolo de fatia chocolate puro">−</button>
-                <output aria-live="polite">0</output>
-                <button type="button" data-mais aria-label="Pôr 1 Bolo de fatia chocolate puro">+</button>
-              </span>
-            </li>
-            <li class="item" data-nome="Bolo de fatia ninho puro" data-preco="12">
-              <span>Ninho puro</span>
-              <span class="contador">
-                <button type="button" data-menos aria-label="Tirar 1 Bolo de fatia ninho puro">−</button>
-                <output aria-live="polite">0</output>
-                <button type="button" data-mais aria-label="Pôr 1 Bolo de fatia ninho puro">+</button>
-              </span>
-            </li>
-            <li class="item" data-nome="Bolo de fatia ninho com chocolate" data-preco="12">
-              <span>Ninho com chocolate</span>
-              <span class="contador">
-                <button type="button" data-menos aria-label="Tirar 1 Bolo de fatia ninho com chocolate">−</button>
-                <output aria-live="polite">0</output>
-                <button type="button" data-mais aria-label="Pôr 1 Bolo de fatia ninho com chocolate">+</button>
-              </span>
-            </li>
-          </ul>
+          <a class="botao" href="/bolos/">Ver sabores →</a>
         </article>
-        <article class="cartao cartao-rosa" id="brigadeiros">
+        <article class="cartao cartao-rosa produto">
           <div class="foto"><img src="/assets/img/brigadeiros.jpg" alt="Caixinha com 4 brigadeiros com a corujinha na tampa" width="960" height="720" loading="lazy"></div>
           <p class="rotulo">Brigadeiros</p>
           <h3>Caixinha com <em>4 brigadeiros</em></h3>
           <p class="preco"><span class="preco-grande">R$ 12</span> <span class="preco-nota">a caixinha</span></p>
-          <p class="apoio" style="margin:0">Dois de chocolate, um de morango e um de chocolate branco.</p>
-          <ul class="itens">
-            <li class="item" data-nome="Caixinha sortida (4 brigadeiros)" data-preco="12">
-              <span>Caixinha sortida</span>
-              <span class="contador">
-                <button type="button" data-menos aria-label="Tirar 1 Caixinha sortida (4 brigadeiros)">−</button>
-                <output aria-live="polite">0</output>
-                <button type="button" data-mais aria-label="Pôr 1 Caixinha sortida (4 brigadeiros)">+</button>
-              </span>
-            </li>
-          </ul>
+          <a class="botao" href="/brigadeiros/">Ver sabores →</a>
         </article>
-        <article class="cartao cartao-claro" id="tortas">
+        <article class="cartao cartao-claro produto">
           <div class="foto"><img src="/assets/img/tortas.jpg" alt="Tortinha de limão no pote redondo" width="960" height="720" loading="lazy"></div>
           <p class="rotulo">Tortas</p>
           <h3>Tortinha <em>individual</em></h3>
           <p class="preco"><span class="preco-grande">R$ 10</span> <span class="preco-nota">a tortinha</span></p>
-          <p class="apoio" style="margin:0">Uma inteira só sua, no pote redondo.</p>
-          <ul class="itens">
-            <li class="item" data-nome="Tortinha de limão" data-preco="10">
-              <span>Limão</span>
-              <span class="contador">
-                <button type="button" data-menos aria-label="Tirar 1 Tortinha de limão">−</button>
-                <output aria-live="polite">0</output>
-                <button type="button" data-mais aria-label="Pôr 1 Tortinha de limão">+</button>
-              </span>
-            </li>
-            <li class="item" data-nome="Tortinha de maracujá" data-preco="10">
-              <span>Maracujá</span>
-              <span class="contador">
-                <button type="button" data-menos aria-label="Tirar 1 Tortinha de maracujá">−</button>
-                <output aria-live="polite">0</output>
-                <button type="button" data-mais aria-label="Pôr 1 Tortinha de maracujá">+</button>
-              </span>
-            </li>
-          </ul>
+          <a class="botao" href="/tortas/">Ver sabores →</a>
         </article>
-        <article class="cartao cartao-escuro" id="geladinhos">
+        <article class="cartao cartao-escuro produto">
           <div class="foto"><img src="/assets/img/geladinhos.jpg" alt="Geladinhos de morango, maracujá, chocolate e pedacinho do céu" width="960" height="720" loading="lazy"></div>
           <p class="rotulo">Geladinhos</p>
           <h3>Geladinho <em>cremoso</em></h3>
           <p class="preco"><span class="preco-grande">R$ 5</span> <span class="preco-nota">cada</span></p>
-          <p class="" style="margin:0">Pra quando o calor aperta. Guarda uns no freezer.</p>
-          <ul class="itens">
-            <li class="item" data-nome="Geladinho de chocolate" data-preco="5">
-              <span>Chocolate</span>
-              <span class="contador">
-                <button type="button" data-menos aria-label="Tirar 1 Geladinho de chocolate">−</button>
-                <output aria-live="polite">0</output>
-                <button type="button" data-mais aria-label="Pôr 1 Geladinho de chocolate">+</button>
-              </span>
-            </li>
-            <li class="item" data-nome="Geladinho de morango" data-preco="5">
-              <span>Morango</span>
-              <span class="contador">
-                <button type="button" data-menos aria-label="Tirar 1 Geladinho de morango">−</button>
-                <output aria-live="polite">0</output>
-                <button type="button" data-mais aria-label="Pôr 1 Geladinho de morango">+</button>
-              </span>
-            </li>
-            <li class="item" data-nome="Geladinho de maracujá" data-preco="5">
-              <span>Maracujá</span>
-              <span class="contador">
-                <button type="button" data-menos aria-label="Tirar 1 Geladinho de maracujá">−</button>
-                <output aria-live="polite">0</output>
-                <button type="button" data-mais aria-label="Pôr 1 Geladinho de maracujá">+</button>
-              </span>
-            </li>
-            <li class="item" data-nome="Geladinho de pedacinho do céu" data-preco="5">
-              <span>Pedacinho do céu</span>
-              <span class="contador">
-                <button type="button" data-menos aria-label="Tirar 1 Geladinho de pedacinho do céu">−</button>
-                <output aria-live="polite">0</output>
-                <button type="button" data-mais aria-label="Pôr 1 Geladinho de pedacinho do céu">+</button>
-              </span>
-            </li>
-          </ul>
+          <a class="botao botao-rosa" href="/geladinhos/">Ver sabores →</a>
         </article>
+      </div>
     </div>
   </section>
-
-  <div class="barra-pedido" id="barra-pedido" aria-live="polite">
-    <div class="faixa">
-      <div>
-        <p class="resumo" id="pedido-resumo">0 itens</p>
-        <p class="total" id="pedido-total">R$ 0</p>
-      </div>
-      <a class="botao botao-whats" id="pedido-enviar" href="https://wa.me/5537998765591" target="_blank" rel="noopener">Enviar pedido no WhatsApp →</a>
-    </div>
-  </div>
 
 </main>
 
@@ -214,6 +96,6 @@
 <a class="flutuante" href="https://wa.me/5537998765591?text=Oi%20Maju%21%20Vim%20pelo%20site%20e%20quero%20fazer%20uma%20encomenda." target="_blank" rel="noopener" aria-label="Pedir pelo WhatsApp">
   <svg viewBox="0 0 24 24" width="28" height="28" aria-hidden="true"><path fill="currentColor" d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2zm0 18.2a8.2 8.2 0 0 1-4.2-1.2l-.3-.2-3 .8.8-2.9-.2-.3A8.2 8.2 0 1 1 12 20.2zm4.5-6.1c-.2-.1-1.5-.7-1.7-.8s-.4-.1-.6.1-.7.8-.8 1-.3.2-.5.1a6.7 6.7 0 0 1-3.3-2.9c-.3-.4.3-.4.7-1.3.1-.2 0-.3 0-.4l-.8-1.8c-.2-.5-.4-.4-.6-.4h-.5a1 1 0 0 0-.7.3 3 3 0 0 0-.9 2.2 5.2 5.2 0 0 0 1.1 2.7 11.8 11.8 0 0 0 4.5 4c1.7.7 2.3.8 3.2.6a2.6 2.6 0 0 0 1.7-1.2 2.1 2.1 0 0 0 .1-1.2c0-.1-.2-.2-.4-.3z"/></svg>
 </a>
-<script src="/assets/pedido.js" defer></script>
+
 </body>
 </html>
