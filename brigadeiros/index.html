@@ -4,12 +4,12 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Brigadeiros | Doce Maju</title>
-  <meta name="description" content="Brigadeiros da Doce Maju, R$ 12 a caixinha. Escolha os sabores e envie o pedido pelo WhatsApp.">
+  <meta name="description" content="Brigadeiros da Doce Maju, R$ 12 a caixinha com 4. Monte a caixinha com os sabores que quiser e envie o pedido pelo WhatsApp.">
   <meta name="theme-color" content="#5B5BD6">
   <link rel="canonical" href="https://docinhosmaju.com.br/brigadeiros/">
   <meta property="og:type" content="website">
   <meta property="og:title" content="Brigadeiros | Doce Maju">
-  <meta property="og:description" content="Brigadeiros da Doce Maju, R$ 12 a caixinha. Escolha os sabores e envie o pedido pelo WhatsApp.">
+  <meta property="og:description" content="Brigadeiros da Doce Maju, R$ 12 a caixinha com 4. Monte a caixinha com os sabores que quiser e envie o pedido pelo WhatsApp.">
   <meta property="og:url" content="https://docinhosmaju.com.br/brigadeiros/">
   <link rel="icon" href="/assets/img/favicon.png" type="image/png">
   <link rel="apple-touch-icon" href="/assets/img/apple-touch-icon.png">
@@ -43,7 +43,7 @@
       <div>
         <p class="rotulo">Brigadeiros</p>
         <h1>Caixinha com <em>4 brigadeiros.</em></h1>
-        <p class="apoio">Dois de chocolate, um de morango e um de chocolate branco, na caixinha com a corujinha na tampa.</p>
+        <p class="apoio">A caixinha com a corujinha na tampa leva 4 brigadeiros. Pega a sortida ou escolhe os sabores que vão dentro.</p>
         <p class="preco"><span class="preco-grande">R$ 12</span> <span class="preco-nota">a caixinha</span></p>
       </div>
       <div class="foto"><img src="/assets/img/brigadeiros.jpg" alt="Caixinha com 4 brigadeiros com a corujinha na tampa" width="960" height="720"></div>
@@ -52,9 +52,10 @@
 
   <section class="secao" style="padding-top:8px">
     <div class="faixa">
-      <h2>Escolhe o sabor</h2>
+      <h2>Pronta ou do seu jeito</h2>
       <ul class="sabores">
         <li class="item sabor" data-nome="Caixinha sortida (4 brigadeiros)" data-preco="12">
+          <img class="sabor-foto" src="/assets/img/brigadeiros.jpg" alt="" width="88" height="88" loading="lazy">
           <div>
             <h3>Caixinha sortida</h3>
             <p class="sabor-nota">2 de chocolate, 1 de morango e 1 de chocolate branco</p>
@@ -67,6 +68,51 @@
           </span>
         </li>
       </ul>
+
+      <div class="montador" data-montador data-tamanho="4" data-preco="12" data-nome="Caixinha montada">
+        <div class="montador-topo">
+          <div>
+            <p class="rotulo">Monte a sua caixinha</p>
+            <h3>Escolhe os <em>4 brigadeiros</em></h3>
+          </div>
+          <p class="montador-conta"><output data-montador-conta>0</output> de 4</p>
+        </div>
+        <ul class="itens montador-sabores">
+          <li class="item montador-sabor" data-sabor="chocolate">
+            <img class="sabor-foto" src="/assets/img/sabores/brigadeiro-chocolate.jpg" alt="" width="88" height="88" loading="lazy">
+            <span>Chocolate</span>
+            <span class="contador">
+              <button type="button" data-menos aria-label="Tirar 1 brigadeiro de chocolate">−</button>
+              <output aria-live="polite">0</output>
+              <button type="button" data-mais aria-label="Pôr 1 brigadeiro de chocolate">+</button>
+            </span>
+          </li>
+          <li class="item montador-sabor" data-sabor="morango">
+            <img class="sabor-foto" src="/assets/img/sabores/brigadeiro-morango.jpg" alt="" width="88" height="88" loading="lazy">
+            <span>Morango</span>
+            <span class="contador">
+              <button type="button" data-menos aria-label="Tirar 1 brigadeiro de morango">−</button>
+              <output aria-live="polite">0</output>
+              <button type="button" data-mais aria-label="Pôr 1 brigadeiro de morango">+</button>
+            </span>
+          </li>
+          <li class="item montador-sabor" data-sabor="chocolate branco">
+            <img class="sabor-foto" src="/assets/img/sabores/brigadeiro-chocolate-branco.jpg" alt="" width="88" height="88" loading="lazy">
+            <span>Chocolate branco</span>
+            <span class="contador">
+              <button type="button" data-menos aria-label="Tirar 1 brigadeiro de chocolate branco">−</button>
+              <output aria-live="polite">0</output>
+              <button type="button" data-mais aria-label="Pôr 1 brigadeiro de chocolate branco">+</button>
+            </span>
+          </li>
+        </ul>
+        <button type="button" class="botao" data-montador-pronto disabled>Pôr a caixinha no pedido · R$ 12</button>
+      </div>
+
+      <div class="suas-caixinhas" data-caixinhas hidden>
+        <h3>Suas caixinhas</h3>
+        <ul class="sabores" data-caixinhas-lista></ul>
+      </div>
       <div class="continua">
         <p class="rotulo">Quer mais? O pedido continua nas outras páginas</p>
         <nav class="abas" aria-label="Outros doces">
@@ -83,6 +129,7 @@
       <div>
         <p class="resumo" id="pedido-resumo">0 itens</p>
         <p class="total" id="pedido-total">R$ 0</p>
+        <p class="frete" id="pedido-frete"></p>
       </div>
       <div class="barra-acoes">
         <button type="button" class="barra-limpar" id="pedido-limpar">Limpar</button>

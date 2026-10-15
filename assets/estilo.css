@@ -285,7 +285,7 @@ em { font-family: var(--fonte-destaque); font-style: italic; font-weight: 600; c
 .categoria-topo { display: grid; grid-template-columns: 1.1fr 1fr; gap: 40px; align-items: center; }
 .categoria-topo .foto { box-shadow: var(--sombra-media); }
 .categoria-topo .preco { margin: var(--e-4) 0 0; }
-.sabores { list-style: none; padding: 0; margin: var(--e-5) 0 0; display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 16px; }
+.sabores { list-style: none; padding: 0; margin: var(--e-5) 0 0; display: grid; grid-template-columns: repeat(auto-fill, minmax(min(340px, 100%), 1fr)); gap: 16px; }
 .sabor {
   background: var(--cor-branco); border: 1px solid var(--cor-linha); border-radius: var(--r-medio);
   padding: 18px 16px 18px 22px; min-height: 116px;
@@ -327,4 +327,38 @@ em { font-family: var(--fonte-destaque); font-style: italic; font-weight: 600; c
   .instagram { flex-direction: column; text-align: center; gap: 20px; }
   .instagram > img { width: 150px; }
   .instagram .apoio { margin-inline: auto; }
+}
+
+/* foto de cada sabor (miniatura à esquerda do item) */
+.sabor-foto { flex: none; width: 72px; height: 72px; border-radius: var(--r-pequeno); object-fit: cover; background: var(--cor-lilas-logo); }
+.sabor-foto.sem-foto { object-fit: contain; padding: 6px; }
+.sabor { padding-left: 14px; }
+.sabor > div { flex: 1; min-width: 0; }
+
+/* montador da caixinha de brigadeiros */
+.montador {
+  margin-top: var(--e-6); padding: 22px; border-radius: var(--r-grande);
+  background: var(--cor-rosa-claro); display: grid; gap: var(--e-4);
+}
+.montador-topo { display: flex; flex-wrap: wrap; align-items: flex-end; justify-content: space-between; gap: var(--e-3); }
+.montador-topo h3 { margin: 0; }
+.montador-conta { margin: 0; padding: 6px 14px; border-radius: var(--r-pilula); background: var(--cor-branco); font-weight: 800; }
+.montador.completo .montador-conta { background: var(--cor-violeta); color: var(--cor-branco); }
+.montador-sabores { grid-template-columns: repeat(auto-fill, minmax(260px, 1fr)); }
+.montador .item { background: var(--cor-branco); padding: 8px 10px; }
+.montador .item > span:not(.contador) { flex: 1; }
+.montador .sabor-foto { width: 56px; height: 56px; }
+.montador .botao { justify-self: start; }
+.contador button:disabled { opacity: .3; cursor: not-allowed; background: transparent; }
+.suas-caixinhas { margin-top: var(--e-6); }
+.suas-caixinhas .sabores { margin-top: var(--e-3); }
+
+/* barra do pedido: quanto falta para a entrega grátis */
+.barra-pedido .frete { margin: 0; color: var(--cor-rosa); font-size: var(--t-pequeno); font-weight: 700; }
+.barra-pedido .frete-gratis { color: var(--cor-whats); }
+
+@media (max-width: 760px) {
+  .montador { padding: 16px; }
+  .montador .botao { justify-self: stretch; }
+  .sabor-foto { width: 64px; height: 64px; }
 }
