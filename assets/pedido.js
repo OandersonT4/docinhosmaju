@@ -40,7 +40,7 @@
       li.dataset.preco = pedido[nome].preco;
       var img = document.createElement('img');
       img.className = 'sabor-foto';
-      img.src = '/assets/img/brigadeiros.jpg?v=3';
+      img.src = '/assets/img/brigadeiros.jpg?v=2';
       img.alt = ''; img.width = 88; img.height = 88;
       var texto = document.createElement('div');
       var h3 = document.createElement('h3');

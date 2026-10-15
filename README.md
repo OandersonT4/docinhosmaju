@@ -26,7 +26,7 @@ Tudo em `assets/estilo.css`: os tokens ficam no começo (`--cor-*`, `--t-*`, `--
 
 ## Fotos e logo
 
-Tudo em `assets/img/`. As fotos dos doces são reais (fotos da Maju, outubro de 2026), com o fundo trocado por um lilás claro da marca (recorte automático com rembg, fora do site):
+Tudo em `assets/img/`. As fotos dos doces são reais (fotos da Maju, outubro de 2026):
 
 - `bolos.jpg`, `brigadeiros.jpg`, `tortas.jpg`, `geladinhos.jpg`: foto grande de cada página e dos cartões do Início (960x720). A dos geladinhos junta os 4 sabores.
 - `sabores/`: miniatura de cada sabor (240x240): bolos de chocolate, chocolate com maracujá, ninho e ninho com maracujá; brigadeiros de chocolate, morango e chocolate branco; tortinhas de limão e maracujá; geladinhos de chocolate, morango, maracujá e pedacinho do céu.
