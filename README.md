@@ -8,7 +8,8 @@ Menu: Início · Bolos · Brigadeiros · Tortas · Geladinhos · Como pedir.
 
 - `/` (`index.html`): Início, com a capa, os 4 produtos (mesmo tamanho; 4 por linha no computador, 2 no celular), o destaque do maracujá, o convite para seguir no Instagram e como pedir.
 - `/bolos/`, `/brigadeiros/`, `/tortas/`, `/geladinhos/`: uma página por doce, com foto, preço e todos os sabores. A pessoa escolhe quantos quer de cada sabor.
-- O pedido fica guardado no navegador (`localStorage`, chave `docemaju-pedido`) e soma entre as páginas; a barra de baixo mostra o total, quanto falta para a entrega grátis, tem "Limpar" e envia tudo junto para o WhatsApp (`assets/pedido.js`).
+- O pedido fica guardado no navegador (`localStorage`, chave `docemaju-pedido`) e soma entre as páginas; a barra de baixo (compacta, uma linha) mostra o total, uma faixa com quanto falta para a entrega grátis, a lixeira para limpar e envia tudo junto para o WhatsApp (`assets/pedido.js`).
+- O CSS e o JS são chamados com `?v=N` (ex.: `estilo.css?v=3`). Ao mudar `estilo.css` ou `pedido.js`, aumente o número em todas as páginas para o celular não ficar com a versão antiga.
 - Em `/brigadeiros/`, além da caixinha sortida, a pessoa monta a caixinha escolhendo os 4 sabores (chocolate, morango, chocolate branco). Cada combinação entra no pedido como "Caixinha montada (2 chocolate, 2 morango)". Para mudar os sabores do montador, edite os `data-sabor` do bloco `data-montador`.
 - Entrega grátis a partir de R$ 40: o valor fica em `ENTREGA_GRATIS` no `assets/pedido.js` e nos selos do Início e de `/como-pedir/`.
 - `/cardapio/`: resumo com os 4 produtos (para links antigos); não aparece no menu.
