@@ -5,6 +5,7 @@
 // diferente vira um item do pedido ("Caixinha montada (2 chocolate, 2 morango)").
 // O botão "Finalizar" abre o painel onde a pessoa escolhe retirada ou entrega (taxa de R$ 10,
 // grátis a partir de R$ 40) e, na entrega, preenche o endereço buscando pelo CEP (ViaCEP).
+// Também escolhe o pagamento: Pix ou dinheiro (e, no dinheiro, se precisa de troco e para quanto).
 (function () {
   var WHATS = '5537998765591';
   var CHAVE = 'docemaju-pedido';
@@ -158,6 +159,7 @@
   function semAcento(t) { return (t || '').normalize('NFD').replace(/[\u0300-\u036f]/g, '').toLowerCase().trim(); }
   function soNumeros(t) { return (t || '').replace(/\D/g, ''); }
   function formatarCep(t) { var v = soNumeros(t).slice(0, 8); return v.length > 5 ? v.slice(0, 5) + '-' + v.slice(5) : v; }
+  function valorTroco() { return Number(String(dados.trocoPara || '').replace(/[^\d,.]/g, '').replace(',', '.')) || 0; }
   function taxa() { return dados.modo === 'entrega' && conta.soma < ENTREGA_GRATIS ? TAXA_ENTREGA : 0; }
 
   function mensagem() {
@@ -170,8 +172,12 @@
       m += '*Total: ' + reais(conta.soma) + '*';
       if (dados.modo === 'retirada') m += '\n\n*Retirada* (combinar o local com você)';
     }
+    if (dados.pagamento === 'pix') m += '\n\n*Pagamento:* Pix';
+    else if (dados.pagamento === 'dinheiro') {
+      m += '\n\n*Pagamento:* Dinheiro' + (dados.troco === 'sim' ? ' (troco para ' + reais(valorTroco()) + ')' : ' (sem troco)');
+    }
     if (dados.nome) m += '\n\nNome: ' + dados.nome;
-    return m + '\n\nQual dia e horário fica bom?';
+    return m;
   }
   function linkWhats() { return 'https://wa.me/' + WHATS + '?text=' + encodeURIComponent(mensagem()); }
 
@@ -179,7 +185,18 @@
   function faltando() {
     if (!conta.qtd) return 'Seu pedido está vazio.';
     if (dados.modo !== 'retirada' && dados.modo !== 'entrega') return 'Escolha retirada ou entrega.';
-    if (dados.modo === 'retirada') return '';
+    var endereco = dados.modo === 'entrega' ? faltaEndereco() : '';
+    if (endereco) return endereco;
+    if (dados.pagamento !== 'pix' && dados.pagamento !== 'dinheiro') return 'Escolha a forma de pagamento.';
+    if (dados.pagamento === 'dinheiro') {
+      if (dados.troco !== 'sim' && dados.troco !== 'nao') return 'Diga se precisa de troco.';
+      var total = conta.soma + taxa();
+      if (dados.troco === 'sim' && !valorTroco()) return 'Diga para quanto é o troco.';
+      if (dados.troco === 'sim' && valorTroco() <= total) return 'O troco precisa ser para um valor maior que o total (' + reais(total) + ').';
+    }
+    return '';
+  }
+  function faltaEndereco() {
     if (soNumeros(dados.cep).length !== 8) return 'Digite o CEP para a entrega.';
     if (cepStatus === 'buscando') return 'Buscando o CEP…';
     if (cepStatus === 'fora') return 'Por enquanto entregamos só em ' + CIDADE + '. Escolha retirada.';
@@ -215,6 +232,17 @@
       '<label class="fin-campo"><span>Complemento <small>(opcional)</small></span><input name="complemento" autocomplete="address-line2"></label></div>' +
       '<label class="fin-campo">Bairro<input name="bairro"></label>' +
       '</div>' +
+      '<fieldset class="fin-modo"><legend>Forma de pagamento</legend>' +
+      '<label class="fin-opcao"><input type="radio" name="pagamento" value="pix"><span><strong>Pix</strong><small>A chave vem na conversa com a Maju</small></span></label>' +
+      '<label class="fin-opcao"><input type="radio" name="pagamento" value="dinheiro"><span><strong>Dinheiro</strong><small>Na entrega ou na retirada</small></span></label>' +
+      '</fieldset>' +
+      '<div class="fin-troco" data-fin-troco hidden>' +
+      '<fieldset class="fin-modo fin-pilulas"><legend>Precisa de troco?</legend>' +
+      '<label class="fin-opcao"><input type="radio" name="troco" value="nao"><span><strong>Não</strong></span></label>' +
+      '<label class="fin-opcao"><input type="radio" name="troco" value="sim"><span><strong>Sim</strong></span></label>' +
+      '</fieldset>' +
+      '<label class="fin-campo" data-fin-troco-valor hidden>Troco para quanto?<input name="trocoPara" inputmode="decimal" placeholder="Ex.: R$ 50"></label>' +
+      '</div>' +
       '<label class="fin-campo"><span>Seu nome <small>(opcional)</small></span><input name="nome" autocomplete="name"></label>' +
       '<dl class="fin-totais"><dt>Doces</dt><dd data-fin-subtotal></dd><dt>Entrega</dt><dd data-fin-taxa></dd>' +
       '<dt class="fin-total">Total</dt><dd class="fin-total" data-fin-total></dd></dl>' +
@@ -228,11 +256,12 @@
     });
     d.addEventListener('close', function () { document.body.classList.remove('com-painel'); });
     d.addEventListener('change', function (e) {
-      if (e.target.name !== 'modo') return;
-      dados.modo = e.target.value;
+      if (e.target.type !== 'radio') return;
+      dados[e.target.name] = e.target.value;
       gravarDados();
       desenharFinalizar();
-      if (dados.modo === 'entrega' && !dados.cep) campo('cep').focus();
+      if (e.target.name === 'modo' && dados.modo === 'entrega' && !dados.cep) campo('cep').focus();
+      if (e.target.name === 'troco' && dados.troco === 'sim' && !dados.trocoPara) campo('trocoPara').focus();
     });
     d.addEventListener('input', function (e) {
       var n = e.target.name;
@@ -244,7 +273,7 @@
       } else if (n === 'busca') {
         buscarRua(e.target.value);
         return;
-      } else if (n) {
+      } else if (n && e.target.type !== 'radio') {
         dados[n] = e.target.value.trim();
       }
       gravarDados();
@@ -332,7 +361,9 @@
       li.textContent = l.replace(/^• /, '');
       itens.appendChild(li);
     });
-    fin.querySelectorAll('[name="modo"]').forEach(function (r) { r.checked = r.value === dados.modo; });
+    fin.querySelectorAll('input[type="radio"]').forEach(function (r) { r.checked = dados[r.name] === r.value; });
+    fin.querySelector('[data-fin-troco]').hidden = dados.pagamento !== 'dinheiro';
+    fin.querySelector('[data-fin-troco-valor]').hidden = dados.troco !== 'sim';
     fin.querySelector('[data-fin-taxa-nota]').textContent = conta.soma >= ENTREGA_GRATIS
       ? 'Grátis neste pedido (a partir de ' + reais(ENTREGA_GRATIS) + ')'
       : reais(TAXA_ENTREGA) + ' · grátis a partir de ' + reais(ENTREGA_GRATIS);
@@ -358,7 +389,7 @@
 
   function abrir() {
     if (!fin) fin = criarPainel();
-    ['cep', 'rua', 'numero', 'complemento', 'bairro', 'nome'].forEach(function (n) {
+    ['cep', 'rua', 'numero', 'complemento', 'bairro', 'nome', 'trocoPara'].forEach(function (n) {
       campo(n).value = n === 'cep' ? formatarCep(dados.cep) : (dados[n] || '');
     });
     if (fin.showModal) fin.showModal(); else fin.setAttribute('open', '');
