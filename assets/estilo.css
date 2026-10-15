@@ -377,3 +377,11 @@ em { font-family: var(--fonte-destaque); font-style: italic; font-weight: 600; c
   color: var(--cor-roxo); font-size: var(--t-pequeno); font-weight: 700; text-decoration: none;
 }
 .voltar:hover { background: var(--cor-linha); }
+
+/* brinde dos geladinhos (usa o visual do montador) */
+.brinde-status { margin: 0; font-weight: 700; color: var(--apoio-rosa); }
+.brinde.liberado .brinde-status { color: var(--cor-violeta); }
+.brinde:not(.liberado) .montador-sabores { opacity: .55; }
+
+/* cartões do Início: botão sempre numa linha só */
+.produto .botao { white-space: nowrap; }
