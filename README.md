@@ -12,7 +12,7 @@ Menu: Início · Bolos · Brigadeiros · Tortas · Geladinhos · Como pedir.
 - O CSS e o JS são chamados com `?v=N` (ex.: `estilo.css?v=3`). Ao mudar `estilo.css` ou `pedido.js`, aumente o número em todas as páginas para o celular não ficar com a versão antiga.
 - Em `/brigadeiros/`, além da caixinha sortida, a pessoa monta a caixinha escolhendo os 4 brigadeiros entre os sabores (chocolate, morango, chocolate branco, amendoim e crocante). Cada combinação entra no pedido como "Caixinha montada (2 chocolate, 2 morango)". Para mudar os sabores do montador, edite os `data-sabor` do bloco `data-montador`.
 - Geladinhos: a cada 4 geladinhos no pedido, a pessoa escolhe 1 de brinde na página `/geladinhos/` (entra no pedido como "Geladinho de morango (brinde)", sem custo). O número fica em `BRINDE_A_CADA` no `assets/pedido.js`.
-- Finalizar pedido: o botão "Finalizar" da barra abre um painel (`<dialog>` criado pelo `assets/pedido.js`) onde a pessoa escolhe **retirada** (grátis) ou **entrega** em Nova Serrana (R$ 10, `TAXA_ENTREGA`; grátis a partir de R$ 40). Na entrega, o CEP é buscado no ViaCEP (viacep.com.br, gratuito, chamado pelo navegador do cliente) e preenche rua e bairro; CEP de outra cidade é recusado. "Não sei meu CEP" busca pelo nome da rua em Nova Serrana. Se o ViaCEP estiver fora do ar, a pessoa digita o endereço. Endereço e nome ficam guardados no navegador (`docemaju-entrega`) e vão na mensagem do WhatsApp com a taxa e o total.
+- Finalizar pedido: o botão "Finalizar" da barra abre um painel (`<dialog>` criado pelo `assets/pedido.js`) onde a pessoa escolhe **retirada** (grátis) ou **entrega** em Nova Serrana (R$ 10, `TAXA_ENTREGA`; grátis a partir de R$ 40). Na entrega, o CEP é buscado no ViaCEP (viacep.com.br, gratuito, chamado pelo navegador do cliente) e preenche rua e bairro; CEP de outra cidade é recusado. "Não sei meu CEP" busca pelo nome da rua em Nova Serrana. Se o ViaCEP estiver fora do ar, a pessoa digita o endereço. Endereço e nome ficam guardados no navegador (`docemaju-entrega`) e vão na mensagem do WhatsApp com a taxa e o total. O pagamento é **Pix** ou **dinheiro**; no dinheiro, a pessoa diz se precisa de troco e para quanto (tem que ser maior que o total).
 - Entrega grátis a partir de R$ 40: o valor fica em `ENTREGA_GRATIS` no `assets/pedido.js` e nos selos do Início e de `/como-pedir/`.
 - `/cardapio/`: só redireciona para o Início (o Início já é o cardápio). Fica para não quebrar links antigos.
 - Páginas internas têm o botão "Voltar" no topo (`assets/voltar.js`): volta para a página anterior do site ou, se a pessoa chegou direto, vai para o Início.
@@ -47,5 +47,5 @@ Para trocar uma foto, salve com o mesmo nome e tamanho e aumente o `?v=N` dela n
 
 ## Pendências da Maju
 
-- Local da retirada e formas de pagamento (não aparecem no site até ela confirmar).
+- Local da retirada (não aparece no site até ela confirmar).
 - Em análise: brinde a partir de R$ 80 (ainda não está no site).

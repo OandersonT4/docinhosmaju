@@ -408,7 +408,9 @@ em { font-family: var(--fonte-destaque); font-style: italic; font-weight: 600; c
 .fin-opcao input:checked + span { border-color: var(--cor-violeta); background: var(--cor-lilas); }
 .fin-opcao input:focus-visible + span { outline: 3px solid var(--cor-rosa); outline-offset: 2px; }
 .fin-endereco { display: grid; gap: var(--e-3); }
-.fin-endereco[hidden] { display: none; }
+.fin-endereco[hidden], .fin-troco[hidden], .fin-campo[hidden] { display: none; }
+.fin-troco { display: grid; gap: var(--e-3); }
+.fin-pilulas .fin-opcao > span { padding: 10px 14px; text-align: center; }
 .fin-cidade { margin: 0; font-size: var(--t-pequeno); color: var(--apoio-claro); }
 .fin-campo { display: grid; gap: 4px; font-size: var(--t-pequeno); font-weight: 700; }
 .fin-campo small { font-weight: 500; color: var(--apoio-claro); }
