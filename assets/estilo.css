@@ -202,9 +202,9 @@ em { font-family: var(--fonte-destaque); font-style: italic; font-weight: 600; c
 }
 .barra-pedido:not(.visivel) { visibility: hidden; }
 .barra-pedido.visivel { transform: none; }
-.barra-pedido .faixa { display: flex; align-items: center; justify-content: space-between; gap: var(--e-4); padding-block: 14px; }
-.barra-pedido .resumo { margin: 0; color: var(--apoio-escuro); font-size: var(--t-pequeno); }
-.barra-pedido .total { margin: 0; font-size: 1.4rem; font-weight: 800; color: var(--cor-branco); }
+.barra-pedido .faixa { display: flex; align-items: center; justify-content: space-between; gap: var(--e-3); padding-block: 10px calc(10px + env(safe-area-inset-bottom)); }
+.barra-pedido .resumo { color: var(--apoio-escuro); font-size: var(--t-pequeno); font-weight: 500; }
+.barra-pedido .total { margin: 0; font-size: 1.25rem; font-weight: 800; color: var(--cor-branco); line-height: 1.2; white-space: nowrap; }
 
 /* caixa de contato */
 .contato {
@@ -266,8 +266,6 @@ em { font-family: var(--fonte-destaque); font-style: italic; font-weight: 600; c
   .capa-grade { grid-template-columns: 1fr; }
   .capa-foto { order: -1; }
   .secao { padding: 56px 0; }
-  .barra-pedido .faixa { flex-wrap: wrap; }
-  .barra-pedido .botao { width: 100%; }
 }
 
 /* preço dentro de um item (tabela de preços) */
@@ -300,7 +298,10 @@ em { font-family: var(--fonte-destaque); font-style: italic; font-weight: 600; c
 
 /* barra do pedido: limpar + enviar */
 .barra-acoes { display: flex; align-items: center; gap: var(--e-4); }
-.barra-limpar { background: transparent; border: 0; padding: 8px; color: var(--apoio-escuro); font: 700 var(--t-pequeno) var(--fonte-texto); text-decoration: underline; cursor: pointer; }
+.barra-acoes { flex: none; gap: var(--e-2); }
+.barra-limpar { width: 40px; height: 40px; border: 0; border-radius: 50%; display: grid; place-items: center; background: rgba(255, 255, 255, .08); color: var(--apoio-escuro); cursor: pointer; }
+.barra-limpar:hover { background: rgba(255, 255, 255, .16); color: var(--cor-branco); }
+.barra-info { min-width: 0; }
 
 /* Instagram: só o convite para seguir */
 .instagram { display: flex; align-items: center; gap: 40px; }
@@ -322,8 +323,6 @@ em { font-family: var(--fonte-destaque); font-style: italic; font-weight: 600; c
 @media (max-width: 760px) {
   .categoria-topo { grid-template-columns: 1fr; gap: 24px; }
   .categoria-topo .foto { order: -1; }
-  .barra-acoes { width: 100%; }
-  .barra-acoes .botao { flex: 1; }
   .instagram { flex-direction: column; text-align: center; gap: 20px; }
   .instagram > img { width: 150px; }
   .instagram .apoio { margin-inline: auto; }
@@ -354,11 +353,27 @@ em { font-family: var(--fonte-destaque); font-style: italic; font-weight: 600; c
 .suas-caixinhas .sabores { margin-top: var(--e-3); }
 
 /* barra do pedido: quanto falta para a entrega grátis */
-.barra-pedido .frete { margin: 0; color: var(--cor-rosa); font-size: var(--t-pequeno); font-weight: 700; }
-.barra-pedido .frete-gratis { color: var(--cor-whats); }
+.barra-pedido .frete { margin: 0; padding: 5px 16px; text-align: center; background: rgba(255, 255, 255, .06); color: var(--cor-rosa); font-size: .8rem; font-weight: 600; line-height: 1.3; }
+.barra-pedido .frete:empty { display: none; }
+.barra-pedido .frete-gratis { color: var(--cor-whats); background: rgba(37, 211, 102, .1); }
 
 @media (max-width: 760px) {
   .montador { padding: 16px; }
   .montador .botao { justify-self: stretch; }
   .sabor-foto { width: 64px; height: 64px; }
 }
+
+@media (max-width: 760px) {
+  .barra-pedido .botao { padding: 11px 18px; font-size: var(--t-pequeno); gap: 6px; }
+  .so-grande { display: none; }
+}
+
+/* botão voltar (topo das páginas internas) */
+.voltar-linha { padding-top: var(--e-4); }
+.voltar-linha + .secao-topo, .voltar-linha + section { padding-top: var(--e-4); }
+.voltar {
+  display: inline-flex; align-items: center; gap: 4px; padding: 7px 14px 7px 10px;
+  border-radius: var(--r-pilula); background: var(--cor-branco); border: 1px solid var(--cor-linha);
+  color: var(--cor-roxo); font-size: var(--t-pequeno); font-weight: 700; text-decoration: none;
+}
+.voltar:hover { background: var(--cor-linha); }

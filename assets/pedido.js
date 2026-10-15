@@ -83,7 +83,7 @@
     var gratis = soma >= ENTREGA_GRATIS;
     barra.classList.toggle('visivel', qtdTotal > 0);
     document.body.classList.toggle('com-pedido', qtdTotal > 0);
-    resumo.textContent = qtdTotal + (qtdTotal === 1 ? ' item no pedido' : ' itens no pedido');
+    resumo.textContent = '· ' + qtdTotal + (qtdTotal === 1 ? ' item' : ' itens');
     total.textContent = reais(soma);
     if (frete) {
       frete.textContent = gratis ? 'Entrega grátis!' : 'Faltam ' + reais(ENTREGA_GRATIS - soma) + ' para a entrega grátis';
