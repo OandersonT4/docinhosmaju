@@ -12,12 +12,13 @@ Menu: Início · Bolos · Brigadeiros · Tortas · Geladinhos · Como pedir.
 - O CSS e o JS são chamados com `?v=N` (ex.: `estilo.css?v=3`). Ao mudar `estilo.css` ou `pedido.js`, aumente o número em todas as páginas para o celular não ficar com a versão antiga.
 - Em `/brigadeiros/`, além da caixinha sortida, a pessoa monta a caixinha escolhendo os 4 sabores (chocolate, morango, chocolate branco). Cada combinação entra no pedido como "Caixinha montada (2 chocolate, 2 morango)". Para mudar os sabores do montador, edite os `data-sabor` do bloco `data-montador`.
 - Entrega grátis a partir de R$ 40: o valor fica em `ENTREGA_GRATIS` no `assets/pedido.js` e nos selos do Início e de `/como-pedir/`.
-- `/cardapio/`: resumo com os 4 produtos (para links antigos); não aparece no menu.
+- `/cardapio/`: só redireciona para o Início (o Início já é o cardápio). Fica para não quebrar links antigos.
+- Páginas internas têm o botão "Voltar" no topo (`assets/voltar.js`): volta para a página anterior do site ou, se a pessoa chegou direto, vai para o Início.
 - `/como-pedir/`: passos, tabela de preços e contato.
 - `/design/`: design system (cores, fontes e componentes). Não aparece no menu e não é indexado pelo Google.
 
 Preços atuais: bolo de fatia R$ 12 · caixinha com 4 brigadeiros R$ 12 · tortinha R$ 10 · geladinho R$ 5.
-Para mudar um preço ou um sabor, troque na página do doce (o `data-preco` de cada sabor é o que entra no total), nos cartões do Início e do `/cardapio/` e na tabela de `/como-pedir/`.
+Para mudar um preço ou um sabor, troque na página do doce (o `data-preco` de cada sabor é o que entra no total), nos cartões do Início e na tabela de `/como-pedir/`.
 
 ## Design system
 

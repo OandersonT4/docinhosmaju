@@ -367,3 +367,13 @@ em { font-family: var(--fonte-destaque); font-style: italic; font-weight: 600; c
   .barra-pedido .botao { padding: 11px 18px; font-size: var(--t-pequeno); gap: 6px; }
   .so-grande { display: none; }
 }
+
+/* botão voltar (topo das páginas internas) */
+.voltar-linha { padding-top: var(--e-4); }
+.voltar-linha + .secao-topo, .voltar-linha + section { padding-top: var(--e-4); }
+.voltar {
+  display: inline-flex; align-items: center; gap: 4px; padding: 7px 14px 7px 10px;
+  border-radius: var(--r-pilula); background: var(--cor-branco); border: 1px solid var(--cor-linha);
+  color: var(--cor-roxo); font-size: var(--t-pequeno); font-weight: 700; text-decoration: none;
+}
+.voltar:hover { background: var(--cor-linha); }
