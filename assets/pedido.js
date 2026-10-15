@@ -7,6 +7,8 @@
   var WHATS = '5537998765591';
   var CHAVE = 'docemaju-pedido';
   var ENTREGA_GRATIS = 40; // pedidos a partir deste valor têm entrega grátis
+  var BRINDE_A_CADA = 4; // a cada 4 geladinhos, 1 de brinde (a pessoa escolhe o sabor)
+  var BRINDE = ' (brinde)';
   var barra = document.getElementById('barra-pedido');
   var resumo = document.getElementById('pedido-resumo');
   var total = document.getElementById('pedido-total');
@@ -15,6 +17,7 @@
   var limpar = document.getElementById('pedido-limpar');
   var montador = document.querySelector('[data-montador]');
   var caixinhas = document.querySelector('[data-caixinhas]');
+  var brinde = document.querySelector('[data-brinde]');
   var reais = function (v) { return 'R$ ' + v.toLocaleString('pt-BR', { minimumFractionDigits: v % 1 ? 2 : 0 }); };
 
   // pedido = { "Nome do item": { qtd: 2, preco: 12 }, ... }
@@ -25,6 +28,49 @@
     try { localStorage.setItem(CHAVE, JSON.stringify(p)); } catch (e) { /* sem armazenamento: vale só nesta página */ }
   }
   var pedido = ler();
+
+  // brinde dos geladinhos: quantos a pessoa ganhou e quantos já escolheu
+  function ehBrinde(nome) { return nome.slice(-BRINDE.length) === BRINDE; }
+  function contarBrindes() {
+    var comprados = 0, escolhidos = 0;
+    Object.keys(pedido).forEach(function (nome) {
+      if (nome.indexOf('Geladinho') !== 0) return;
+      if (ehBrinde(nome)) escolhidos += pedido[nome].qtd; else comprados += pedido[nome].qtd;
+    });
+    return { comprados: comprados, ganhos: Math.floor(comprados / BRINDE_A_CADA), escolhidos: escolhidos };
+  }
+  // se a pessoa tirou geladinhos e perdeu brinde, tira os brindes que sobraram
+  function ajustarBrindes() {
+    var c = contarBrindes(), sobra = c.escolhidos - c.ganhos;
+    if (sobra <= 0) return;
+    Object.keys(pedido).forEach(function (nome) {
+      if (sobra <= 0 || !ehBrinde(nome)) return;
+      var tira = Math.min(sobra, pedido[nome].qtd);
+      pedido[nome].qtd -= tira; sobra -= tira;
+      if (!pedido[nome].qtd) delete pedido[nome];
+    });
+    gravar(pedido);
+  }
+  function desenharBrinde() {
+    if (!brinde) return;
+    var c = contarBrindes();
+    var status = brinde.querySelector('[data-brinde-status]');
+    if (!c.ganhos) {
+      var falta = BRINDE_A_CADA - (c.comprados % BRINDE_A_CADA);
+      status.textContent = 'Põe mais ' + falta + (falta === 1 ? ' geladinho' : ' geladinhos') + ' no pedido e escolhe 1 de brinde.';
+    } else {
+      status.textContent = 'Você ganhou ' + c.ganhos + (c.ganhos === 1 ? ' brinde' : ' brindes') + '! Escolha o sabor: ' + c.escolhidos + ' de ' + c.ganhos + '.';
+    }
+    brinde.classList.toggle('liberado', c.ganhos > 0);
+    brinde.querySelectorAll('[data-brinde-sabor]').forEach(function (li) {
+      var nome = li.dataset.brindeSabor + BRINDE;
+      var q = pedido[nome] ? pedido[nome].qtd : 0;
+      li.querySelector('output').textContent = q;
+      li.classList.toggle('escolhido', q > 0);
+      li.querySelector('[data-mais]').disabled = c.escolhidos >= c.ganhos;
+      li.querySelector('[data-menos]').disabled = q === 0;
+    });
+  }
 
   // caixinhas montadas que já estão no pedido, cada uma com o seu contador
   function desenharCaixinhas() {
@@ -65,7 +111,9 @@
   }
 
   function atualizar() {
+    ajustarBrindes();
     desenharCaixinhas();
+    desenharBrinde();
     document.querySelectorAll('.item[data-preco]').forEach(function (li) {
       var q = pedido[li.dataset.nome] ? pedido[li.dataset.nome].qtd : 0;
       li.querySelector('output').textContent = q;
@@ -78,7 +126,7 @@
       if (!it.qtd) return;
       soma += it.qtd * it.preco;
       qtdTotal += it.qtd;
-      linhas.push('• ' + it.qtd + 'x ' + nome + ' (' + reais(it.qtd * it.preco) + ')');
+      linhas.push('• ' + it.qtd + 'x ' + nome + (ehBrinde(nome) ? '' : ' (' + reais(it.qtd * it.preco) + ')'));
     });
     var gratis = soma >= ENTREGA_GRATIS;
     barra.classList.toggle('visivel', qtdTotal > 0);
@@ -159,6 +207,22 @@
     });
 
     atualizarMontador();
+  }
+
+  if (brinde) {
+    brinde.addEventListener('click', function (e) {
+      var b = e.target.closest('[data-brinde-sabor] button');
+      if (!b || b.disabled) return;
+      var nome = b.closest('[data-brinde-sabor]').dataset.brindeSabor + BRINDE;
+      var c = contarBrindes(), atual = pedido[nome] ? pedido[nome].qtd : 0;
+      if (b.hasAttribute('data-mais')) {
+        if (c.escolhidos >= c.ganhos) return;
+        pedido[nome] = { qtd: atual + 1, preco: 0 };
+      } else if (atual > 1) pedido[nome].qtd = atual - 1;
+      else delete pedido[nome];
+      gravar(pedido);
+      atualizar();
+    });
   }
 
   if (limpar) {
