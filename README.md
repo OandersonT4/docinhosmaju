@@ -10,7 +10,7 @@ Menu: Início · Bolos · Brigadeiros · Tortas · Geladinhos · Como pedir.
 - `/bolos/`, `/brigadeiros/`, `/tortas/`, `/geladinhos/`: uma página por doce, com foto, preço e todos os sabores. A pessoa escolhe quantos quer de cada sabor.
 - O pedido fica guardado no navegador (`localStorage`, chave `docemaju-pedido`) e soma entre as páginas; a barra de baixo (compacta, uma linha) mostra o total, uma faixa com quanto falta para a entrega grátis, a lixeira para limpar e envia tudo junto para o WhatsApp (`assets/pedido.js`).
 - O CSS e o JS são chamados com `?v=N` (ex.: `estilo.css?v=3`). Ao mudar `estilo.css` ou `pedido.js`, aumente o número em todas as páginas para o celular não ficar com a versão antiga.
-- Em `/brigadeiros/`, além da caixinha sortida, a pessoa monta a caixinha escolhendo os 4 sabores (chocolate, morango, chocolate branco). Cada combinação entra no pedido como "Caixinha montada (2 chocolate, 2 morango)". Para mudar os sabores do montador, edite os `data-sabor` do bloco `data-montador`.
+- Em `/brigadeiros/`, além da caixinha sortida, a pessoa monta a caixinha escolhendo os 4 brigadeiros entre os sabores (chocolate, morango, chocolate branco, amendoim e crocante). Cada combinação entra no pedido como "Caixinha montada (2 chocolate, 2 morango)". Para mudar os sabores do montador, edite os `data-sabor` do bloco `data-montador`.
 - Entrega grátis a partir de R$ 40: o valor fica em `ENTREGA_GRATIS` no `assets/pedido.js` e nos selos do Início e de `/como-pedir/`.
 - `/cardapio/`: só redireciona para o Início (o Início já é o cardápio). Fica para não quebrar links antigos.
 - Páginas internas têm o botão "Voltar" no topo (`assets/voltar.js`): volta para a página anterior do site ou, se a pessoa chegou direto, vai para o Início.
@@ -26,11 +26,10 @@ Tudo em `assets/estilo.css`: os tokens ficam no começo (`--cor-*`, `--t-*`, `--
 
 ## Fotos e logo
 
-Tudo em `assets/img/`. As fotos dos doces são reais (fotos da Maju, outubro de 2026):
+Tudo em `assets/img/`. As fotos dos doces são as versões profissionais (geradas no ChatGPT a partir das fotos reais da Maju, outubro de 2026):
 
 - `bolos.jpg`, `brigadeiros.jpg`, `tortas.jpg`, `geladinhos.jpg`: foto grande de cada página e dos cartões do Início (960x720). A dos geladinhos junta os 4 sabores.
-- `sabores/`: miniatura de cada sabor (240x240): bolos de chocolate, chocolate com maracujá, ninho e ninho com maracujá; brigadeiros de chocolate, morango e chocolate branco; tortinhas de limão e maracujá; geladinhos de chocolate, morango, maracujá e pedacinho do céu.
-- O bolo de ninho com chocolate ainda não tem foto e mostra a logo (classe `sem-foto`). Quando chegar a foto, salve em `sabores/` (240x240), troque o `src` e tire o `sem-foto` em `bolos/index.html`.
+- `sabores/`: miniatura de cada sabor (240x240). O bolo de chocolate com ninho usa a mesma foto do chocolate com maracujá (bolo marrom com cobertura branca).
 - `logo-coruja.png`: logo oficial (corujinha + nome, fundo transparente) na capa.
 - `logo.png`, `logo-pequena.png`: logo no círculo lilás (a pequena vai no topo, ao lado do nome).
 - `favicon.png`, `apple-touch-icon.png`, `og.jpg`: ícone da aba, ícone do celular e imagem de compartilhamento (WhatsApp, Facebook).
@@ -47,5 +46,4 @@ Para trocar uma foto, salve com o mesmo nome e tamanho e aumente o `?v=N` dela n
 ## Pendências da Maju
 
 - Cidade, valor da entrega abaixo de R$ 40, retirada e formas de pagamento (não aparecem no site até ela confirmar).
-- Foto do bolo de ninho com chocolate.
 - Em análise: brinde a partir de R$ 80 (ainda não está no site).
