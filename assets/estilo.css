@@ -462,3 +462,18 @@ em { font-family: var(--fonte-destaque); font-style: italic; font-weight: 600; c
 @media (prefers-reduced-motion: reduce) {
   .js .reveal { opacity: 1; transform: none; transition: none; }
 }
+
+/* 6. TEXTO E PERGUNTAS ---------------------------------------------------- */
+/* texto de cada página de doce (também é o que o Google lê) */
+.texto-seo h2 { font-size: var(--t-h3); }
+.texto-seo p { max-width: 46em; color: var(--apoio-claro); margin: 0 0 var(--e-3); }
+.texto-seo a { color: var(--cor-violeta); font-weight: 700; }
+
+/* perguntas frequentes (<details>) */
+.perguntas { display: grid; gap: var(--e-3); margin-top: var(--e-5); max-width: 760px; }
+.perguntas details { background: var(--cor-lilas); border: 1px solid var(--cor-linha); border-radius: var(--r-medio); padding: 0 20px; }
+.perguntas summary { min-height: 56px; display: flex; align-items: center; justify-content: space-between; gap: var(--e-3); cursor: pointer; font-weight: 700; list-style: none; }
+.perguntas summary::-webkit-details-marker { display: none; }
+.perguntas summary::after { content: "+"; flex: none; font-size: 1.4rem; font-weight: 800; color: var(--cor-violeta); }
+.perguntas details[open] summary::after { content: "−"; }
+.perguntas details p { margin: 0 0 18px; color: var(--apoio-claro); }

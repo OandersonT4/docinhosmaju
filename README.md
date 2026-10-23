@@ -26,6 +26,14 @@ Para mudar um preço ou um sabor, troque na página do doce (o `data-preco` de c
 
 Tudo em `assets/estilo.css`: os tokens ficam no começo (`--cor-*`, `--t-*`, `--e-*`, `--r-*`) e os componentes logo abaixo (`.botao`, `.cartao-claro|rosa|escuro`, `.aba`, `.preco`, `.selo`, `.item` + `.contador`, `.passos`, `.contato`). Use sempre as classes e os tokens em vez de cores soltas.
 
+## Google
+
+- Cada página tem a sua palavra principal no título e no `<h1>`: Início "Doceria em Nova Serrana", Bolos "Bolo de pote em Nova Serrana", Brigadeiros "Brigadeiro em Nova Serrana", Tortas "Torta de limão em Nova Serrana", Geladinhos "Geladinho gourmet em Nova Serrana". Duas páginas não disputam a mesma palavra.
+- Cada página de doce tem um bloco de texto no fim (`.texto-seo`) com os sabores, o preço, a entrega em Nova Serrana e links para os outros doces. Ao mudar sabor ou preço, mude também esse texto.
+- Início com JSON-LD `Bakery` (nome, telefone, Nova Serrana, Pix/dinheiro, Instagram e os 4 produtos com preço). Como pedir com perguntas frequentes e o JSON-LD `FAQPage` com as mesmas perguntas: ao mudar uma, mude as duas.
+- `sitemap.xml` (atualize o `lastmod` ao mudar páginas), `robots.txt` e `404.html` (com `noindex`). Para o Nginx usar a página 404, a configuração do site precisa de `error_page 404 /404.html;`.
+- Fotos de sabor com `alt` descrevendo o sabor. Rodapé com "Nova Serrana/MG".
+
 ## Fontes, movimento e compartilhamento
 
 - **Fontes** (Poppins, Lora itálico e Pacifico) servidas pelo próprio site, em `assets/fontes/` (`fontes.css` + arquivos `.woff2`, licença em `OFL.txt`). Não chama mais o Google Fonts. As duas mais usadas têm `preload` no `<head>`.
