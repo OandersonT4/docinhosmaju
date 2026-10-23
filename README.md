@@ -26,6 +26,13 @@ Para mudar um preço ou um sabor, troque na página do doce (o `data-preco` de c
 
 Tudo em `assets/estilo.css`: os tokens ficam no começo (`--cor-*`, `--t-*`, `--e-*`, `--r-*`) e os componentes logo abaixo (`.botao`, `.cartao-claro|rosa|escuro`, `.aba`, `.preco`, `.selo`, `.item` + `.contador`, `.passos`, `.contato`). Use sempre as classes e os tokens em vez de cores soltas.
 
+## Fontes, movimento e compartilhamento
+
+- **Fontes** (Poppins, Lora itálico e Pacifico) servidas pelo próprio site, em `assets/fontes/` (`fontes.css` + arquivos `.woff2`, licença em `OFL.txt`). Não chama mais o Google Fonts. As duas mais usadas têm `preload` no `<head>`.
+- **Entrada suave ao rolar** (`assets/movimento.js`): o que está abaixo da primeira tela sobe de leve ao aparecer. Desligado com "reduzir movimento" no celular e sem JavaScript (o `<head>` marca `html.js`; sem ele nada fica escondido).
+- **Toque:** botões, abas, contadores e links do rodapé com pelo menos 44 px de altura.
+- **Imagem de compartilhamento** (`assets/img/og.jpg`, 1200x630): montada em `docs/og/og.html` (logo, título e as 4 fotos). Para refazer, rode o site localmente, tire um print de 1200x630 dessa página, salve como `og.jpg` e aumente o `?v=` do `og:image` em todas as páginas. A pasta `docs/` não vai para a VPS.
+
 ## Fotos e logo
 
 Tudo em `assets/img/`. As fotos dos doces são as versões profissionais (geradas no ChatGPT a partir das fotos reais da Maju, outubro de 2026):
