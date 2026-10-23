@@ -447,3 +447,18 @@ em { font-family: var(--fonte-destaque); font-style: italic; font-weight: 600; c
   .finalizar { margin: auto 0 0; max-width: 100%; width: 100%; max-height: 92vh; border-radius: var(--r-grande) var(--r-grande) 0 0; }
   .fin-corpo { padding: 18px 16px calc(20px + env(safe-area-inset-bottom)); }
 }
+
+/* 5. TOQUE E MOVIMENTO ---------------------------------------------------- */
+/* área de toque de pelo menos 44 px em tudo que é clicável */
+.marca, .aba, .botao, .voltar, .barra-limpar { min-height: 44px; }
+.aba, .voltar, .barra-limpar { display: inline-flex; align-items: center; }
+.contador button { width: 44px; height: 44px; }
+.rodape a { display: inline-block; padding-block: 10px; }
+
+/* entrada suave ao rolar: o assets/movimento.js só marca o que está abaixo da primeira tela,
+   e só quando a pessoa não pediu "reduzir movimento" no celular. Sem JS, tudo aparece normal. */
+.js .reveal { opacity: 0; transform: translateY(18px); transition: opacity .55s ease, transform .55s cubic-bezier(.2, .7, .2, 1); transition-delay: calc(var(--i, 0) * 70ms); }
+.js .reveal.visto { opacity: 1; transform: none; }
+@media (prefers-reduced-motion: reduce) {
+  .js .reveal { opacity: 1; transform: none; transition: none; }
+}

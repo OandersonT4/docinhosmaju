@@ -5,6 +5,7 @@
 /.deployignore
 /README.md
 /CLAUDE.md
+/docs/
 # Segurança: nunca enviar credenciais, backups ou dependências
 .env
 .env.*
