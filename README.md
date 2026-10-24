@@ -6,7 +6,8 @@ Site estático de docinhosmaju.com.br (HTML/CSS/JavaScript, sem build).
 
 Menu: Início · Bolos · Brigadeiros · Tortas · Geladinhos · Como pedir.
 
-- `/` (`index.html`): Início, com a capa, os 4 produtos (mesmo tamanho; 4 por linha no computador, 2 no celular), o destaque do maracujá, o convite para seguir no Instagram e como pedir.
+- `/` (`index.html`): Início, com a capa (os 4 doces em mosaico com a corujinha no meio), os 4 produtos (mesmo tamanho; 4 por linha no computador, 2 no celular), a caixinha que se monta ao rolar, o destaque do maracujá, o convite para seguir no Instagram e como pedir.
+- **Caixinha que se monta ao rolar** (Início, `assets/caixinha.js`, desde 24/10/2026): o momento-assinatura do site. A seção fica parada na tela enquanto a pessoa rola, os 4 brigadeiros entram um de cada vez na caixinha, o contador vai de "0 de 4" a "Caixinha fechada!", a tampa com a corujinha fecha e aparece o preço. O botão leva para o montador (`/brigadeiros/#montador`). Só mexe em `transform` e `opacity`. Sem JS ou com "reduzir movimento", aparece montada e aberta, sem a seção fixa. Ao mudar o preço da caixinha, mude também o `.cx-preco` do Início.
 - `/bolos/`, `/brigadeiros/`, `/tortas/`, `/geladinhos/`: uma página por doce, com foto, preço e todos os sabores. A pessoa escolhe quantos quer de cada sabor.
 - O pedido fica guardado no navegador (`localStorage`, chave `docemaju-pedido`) e soma entre as páginas; a barra de baixo (compacta, uma linha) mostra o total, uma faixa com quanto falta para a entrega grátis, a lixeira para limpar e envia tudo junto para o WhatsApp (`assets/pedido.js`).
 - O CSS e o JS são chamados com `?v=N` (ex.: `estilo.css?v=3`). Ao mudar `estilo.css` ou `pedido.js`, aumente o número em todas as páginas para o celular não ficar com a versão antiga.
@@ -37,6 +38,8 @@ Tudo em `assets/estilo.css`: os tokens ficam no começo (`--cor-*`, `--t-*`, `--
 ## Fontes, movimento e compartilhamento
 
 - **Fontes** (Poppins, Lora itálico e Pacifico) servidas pelo próprio site, em `assets/fontes/` (`fontes.css` + arquivos `.woff2`, licença em `OFL.txt`). Não chama mais o Google Fonts. As duas mais usadas têm `preload` no `<head>`.
+- **Movimento como token** (`assets/estilo.css`, começo): `--dur-rapida` (0,3 s), `--dur-media` (0,6 s), `--dur-lenta` (1,2 s), `--curva-suave` e `--curva-mola`. Todo efeito novo usa só esses valores.
+- **Menu do celular**: o fim da faixa de abas some aos poucos para mostrar que dá para arrastar, e a aba da página atual já aparece na tela (`assets/movimento.js`).
 - **Entrada suave ao rolar** (`assets/movimento.js`): o que está abaixo da primeira tela sobe de leve ao aparecer. Desligado com "reduzir movimento" no celular e sem JavaScript (o `<head>` marca `html.js`; sem ele nada fica escondido).
 - **Toque:** botões, abas, contadores e links do rodapé com pelo menos 44 px de altura.
 - **Imagem de compartilhamento** (`assets/img/og.jpg`, 1200x630): montada em `docs/og/og.html` (logo, título e as 4 fotos). Para refazer, rode o site localmente, tire um print de 1200x630 dessa página, salve como `og.jpg` e aumente o `?v=` do `og:image` em todas as páginas. A pasta `docs/` não vai para a VPS.
@@ -46,7 +49,8 @@ Tudo em `assets/estilo.css`: os tokens ficam no começo (`--cor-*`, `--t-*`, `--
 Tudo em `assets/img/`. As fotos dos doces são as versões profissionais (geradas no ChatGPT a partir das fotos reais da Maju, outubro de 2026):
 
 - `bolos.jpg`, `brigadeiros.jpg`, `tortas.jpg`, `geladinhos.jpg`: foto grande de cada página e dos cartões do Início (960x720). A dos geladinhos é a foto dos 4 sabores juntos na tábua.
-- `sabores/`: miniatura de cada sabor (240x240). O bolo de chocolate com ninho usa a mesma foto do chocolate com maracujá (bolo marrom com cobertura branca).
+- `capa/`: recortes quadrados (440x440, WebP) dos 4 doces para o mosaico da capa. `bolos-480.webp` etc.: versões leves (480x360, WebP) dos cartões do Início, dentro de `<picture>` (o `.jpg` continua como reserva). Ao trocar a foto de um doce, refaça os dois a partir do `.jpg`.
+- `sabores/`: miniatura de cada sabor (240x240). As de brigadeiro também são os doces da caixinha que se monta no Início. O bolo de chocolate com ninho usa a mesma foto do chocolate com maracujá (bolo marrom com cobertura branca).
 - `logo-coruja.png`: logo oficial (corujinha + nome, fundo transparente) na capa.
 - `logo.png`, `logo-pequena.png`: logo no círculo lilás (a pequena vai no topo, ao lado do nome).
 - `favicon.png`, `apple-touch-icon.png`, `og.jpg`: ícone da aba, ícone do celular e imagem de compartilhamento (WhatsApp, Facebook).
