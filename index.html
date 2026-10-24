@@ -18,7 +18,7 @@
   <link rel="preload" href="/assets/fontes/poppins-800-latin.woff2" as="font" type="font/woff2" crossorigin>
   <link rel="preload" href="/assets/fontes/poppins-500-latin.woff2" as="font" type="font/woff2" crossorigin>
   <link rel="stylesheet" href="/assets/fontes/fontes.css?v=1">
-  <link rel="stylesheet" href="/assets/estilo.css?v=9">
+  <link rel="stylesheet" href="/assets/estilo.css?v=10">
   <script type="application/ld+json">
 {
  "@context": "https://schema.org",
@@ -126,8 +126,12 @@
         </div>
       </div>
       <div class="capa-foto">
-        <div class="foto foto-redonda">
-          <img src="/assets/img/logo-coruja.png" alt="Logo da Doce Maju: a corujinha confeiteira com um cookie" width="520" height="520">
+        <div class="mosaico">
+          <img src="/assets/img/capa/bolos.webp" alt="Bolo de fatia de chocolate no potinho" width="440" height="440" fetchpriority="high" style="--n:0">
+          <img src="/assets/img/capa/brigadeiros.webp" alt="Caixinha aberta com 4 brigadeiros" width="440" height="440" style="--n:1">
+          <img src="/assets/img/capa/tortas.webp" alt="Tortinha de limão no pote redondo" width="440" height="440" style="--n:2">
+          <img src="/assets/img/capa/geladinhos.webp" alt="Geladinhos de morango, maracujá, chocolate e pedacinho do céu" width="440" height="440" style="--n:3">
+          <span class="mosaico-coruja"><img src="/assets/img/logo-coruja.png" alt="Logo da Doce Maju: a corujinha confeiteira com um cookie" width="520" height="520"></span>
         </div>
       </div>
     </div>
@@ -139,33 +143,61 @@
       <h2>Escolhe o seu <em>(ou todos).</em></h2>
       <div class="grade-produtos">
         <article class="cartao cartao-claro produto">
-          <div class="foto"><img src="/assets/img/bolos.jpg?v=3" alt="Bolo de fatia de chocolate no potinho" width="960" height="720" loading="lazy"></div>
+          <div class="foto"><picture><source type="image/webp" srcset="/assets/img/bolos-480.webp 480w, /assets/img/capa/bolos.webp 440w" sizes="(max-width: 760px) 45vw, 240px"><img src="/assets/img/bolos.jpg?v=3" alt="Bolo de fatia de chocolate no potinho" width="960" height="720" loading="lazy"></picture></div>
           <p class="rotulo">Bolos</p>
           <h3>Bolo de fatia <em>no potinho</em></h3>
           <p class="preco"><span class="preco-grande">R$ 12</span> <span class="preco-nota">o potinho</span></p>
           <a class="botao" href="/bolos/">Ver sabores →</a>
         </article>
         <article class="cartao cartao-rosa produto">
-          <div class="foto"><img src="/assets/img/brigadeiros.jpg?v=3" alt="Caixinha aberta com 4 brigadeiros" width="960" height="720" loading="lazy"></div>
+          <div class="foto"><picture><source type="image/webp" srcset="/assets/img/brigadeiros-480.webp 480w, /assets/img/capa/brigadeiros.webp 440w" sizes="(max-width: 760px) 45vw, 240px"><img src="/assets/img/brigadeiros.jpg?v=3" alt="Caixinha aberta com 4 brigadeiros" width="960" height="720" loading="lazy"></picture></div>
           <p class="rotulo">Brigadeiros</p>
           <h3>Caixinha com <em>4 brigadeiros</em></h3>
           <p class="preco"><span class="preco-grande">R$ 12</span> <span class="preco-nota">a caixinha</span></p>
           <a class="botao" href="/brigadeiros/">Ver sabores →</a>
         </article>
         <article class="cartao cartao-claro produto">
-          <div class="foto"><img src="/assets/img/tortas.jpg?v=3" alt="Tortinha de limão no pote redondo" width="960" height="720" loading="lazy"></div>
+          <div class="foto"><picture><source type="image/webp" srcset="/assets/img/tortas-480.webp 480w, /assets/img/capa/tortas.webp 440w" sizes="(max-width: 760px) 45vw, 240px"><img src="/assets/img/tortas.jpg?v=3" alt="Tortinha de limão no pote redondo" width="960" height="720" loading="lazy"></picture></div>
           <p class="rotulo">Tortas</p>
           <h3>Tortinha <em>individual</em></h3>
           <p class="preco"><span class="preco-grande">R$ 10</span> <span class="preco-nota">a tortinha</span></p>
           <a class="botao" href="/tortas/">Ver sabores →</a>
         </article>
         <article class="cartao cartao-escuro produto">
-          <div class="foto"><img src="/assets/img/geladinhos.jpg?v=4" alt="Geladinhos de morango, maracujá, chocolate e pedacinho do céu" width="960" height="720" loading="lazy"></div>
+          <div class="foto"><picture><source type="image/webp" srcset="/assets/img/geladinhos-480.webp 480w, /assets/img/capa/geladinhos.webp 440w" sizes="(max-width: 760px) 45vw, 240px"><img src="/assets/img/geladinhos.jpg?v=4" alt="Geladinhos de morango, maracujá, chocolate e pedacinho do céu" width="960" height="720" loading="lazy"></picture></div>
           <p class="rotulo">Geladinhos</p>
           <h3>Geladinho <em>cremoso</em></h3>
           <p class="preco"><span class="preco-grande">R$ 5</span> <span class="preco-nota">cada</span></p>
           <a class="botao" href="/geladinhos/">Ver sabores →</a>
         </article>
+      </div>
+    </div>
+  </section>
+
+  <section class="cx" data-caixinha aria-labelledby="cx-titulo">
+    <div class="cx-fixa">
+      <div class="faixa cx-grade">
+        <div class="cx-texto">
+          <p class="rotulo">Monte a sua caixinha</p>
+          <h2 id="cx-titulo">Escolhe 4. <em>A corujinha fecha.</em></h2>
+          <p class="cx-conta" data-cx-conta aria-hidden="true">4 brigadeiros</p>
+          <p class="apoio">Chocolate, morango, chocolate branco, amendoim e crocante: você escolhe os 4 que vão na caixinha.</p>
+          <div class="acoes"><a class="botao" href="/brigadeiros/#montador">Montar minha caixinha →</a></div>
+        </div>
+        <div class="cx-palco">
+          <div class="cx-caixa">
+            <span class="cx-vaga"><img class="cx-doce" src="/assets/img/sabores/brigadeiro-chocolate.jpg" alt="Brigadeiro de chocolate" width="240" height="240" loading="lazy"></span>
+            <span class="cx-vaga"><img class="cx-doce" src="/assets/img/sabores/brigadeiro-morango.jpg" alt="Brigadeiro de morango" width="240" height="240" loading="lazy"></span>
+            <span class="cx-vaga"><img class="cx-doce" src="/assets/img/sabores/brigadeiro-chocolate-branco.jpg" alt="Brigadeiro de chocolate branco" width="240" height="240" loading="lazy"></span>
+            <span class="cx-vaga"><img class="cx-doce" src="/assets/img/sabores/brigadeiro-crocante.jpg" alt="Brigadeiro crocante" width="240" height="240" loading="lazy"></span>
+            <div class="cx-tampa" aria-hidden="true">
+              <img src="/assets/img/logo.png" alt="" width="200" height="200" loading="lazy">
+              <strong>Doce Maju</strong>
+              <span>4 brigadeiros</span>
+            </div>
+            <p class="cx-preco">R$ 12 <small>a caixinha</small></p>
+          </div>
+        </div>
       </div>
     </div>
   </section>
@@ -228,6 +260,7 @@
   <svg viewBox="0 0 24 24" width="28" height="28" aria-hidden="true"><path fill="currentColor" d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2zm0 18.2a8.2 8.2 0 0 1-4.2-1.2l-.3-.2-3 .8.8-2.9-.2-.3A8.2 8.2 0 1 1 12 20.2zm4.5-6.1c-.2-.1-1.5-.7-1.7-.8s-.4-.1-.6.1-.7.8-.8 1-.3.2-.5.1a6.7 6.7 0 0 1-3.3-2.9c-.3-.4.3-.4.7-1.3.1-.2 0-.3 0-.4l-.8-1.8c-.2-.5-.4-.4-.6-.4h-.5a1 1 0 0 0-.7.3 3 3 0 0 0-.9 2.2 5.2 5.2 0 0 0 1.1 2.7 11.8 11.8 0 0 0 4.5 4c1.7.7 2.3.8 3.2.6a2.6 2.6 0 0 0 1.7-1.2 2.1 2.1 0 0 0 .1-1.2c0-.1-.2-.2-.4-.3z"/></svg>
 </a>
 
-<script src="/assets/movimento.js?v=1" defer></script>
+<script src="/assets/movimento.js?v=2" defer></script>
+<script src="/assets/caixinha.js?v=1" defer></script>
 </body>
 </html>

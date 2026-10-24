@@ -2,6 +2,15 @@
 // chega na tela. Itens lado a lado (cartões, sabores, passos) entram um pouco depois do outro.
 // Não roda com "reduzir movimento" ligado nem em navegador sem IntersectionObserver.
 (function () {
+  // Menu do celular: deixa a aba da página atual à vista e tira o esmaecido do fim quando chega no fim
+  var abas = document.querySelector('.topo .abas');
+  if (abas) {
+    var atual = abas.querySelector('[aria-current="page"]');
+    if (atual && abas.scrollWidth > abas.clientWidth) abas.scrollLeft = Math.max(0, atual.offsetLeft - 16);
+    var fim = function () { abas.classList.toggle('no-fim', abas.scrollLeft + abas.clientWidth >= abas.scrollWidth - 4); };
+    abas.addEventListener('scroll', fim, { passive: true }); fim();
+  }
+
   if (!('IntersectionObserver' in window)) return;
   if (window.matchMedia && matchMedia('(prefers-reduced-motion: reduce)').matches) return;
   var alvos = document.querySelectorAll(
