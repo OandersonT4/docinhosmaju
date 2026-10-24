@@ -1,0 +1,29 @@
+{
+  "name": "Doce Maju",
+  "short_name": "Doce Maju",
+  "description": "Bolo de pote, brigadeiro, tortinha e geladinho em Nova Serrana. Monte o pedido e mande pronto no WhatsApp.",
+  "start_url": "/",
+  "scope": "/",
+  "display": "standalone",
+  "background_color": "#F4F0FD",
+  "theme_color": "#5B5BD6",
+  "lang": "pt-BR",
+  "icons": [
+    {
+      "src": "/assets/img/icone-192.png",
+      "sizes": "192x192",
+      "type": "image/png"
+    },
+    {
+      "src": "/assets/img/icone-512.png",
+      "sizes": "512x512",
+      "type": "image/png"
+    },
+    {
+      "src": "/assets/img/icone-maskable-512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "maskable"
+    }
+  ]
+}
