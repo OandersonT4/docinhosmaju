@@ -42,7 +42,8 @@ Tudo em `assets/estilo.css`: os tokens ficam no começo (`--cor-*`, `--t-*`, `--
 - **Menu do celular**: o fim da faixa de abas some aos poucos para mostrar que dá para arrastar, e a aba da página atual já aparece na tela (`assets/movimento.js`).
 - **Entrada suave ao rolar** (`assets/movimento.js`): o que está abaixo da primeira tela sobe de leve ao aparecer. Desligado com "reduzir movimento" no celular e sem JavaScript (o `<head>` marca `html.js`; sem ele nada fica escondido).
 - **Toque:** botões, abas, contadores e links do rodapé com pelo menos 44 px de altura.
-- **Imagem de compartilhamento** (`assets/img/og.jpg`, 1200x630): montada em `docs/og/og.html` (logo, título e as 4 fotos). Para refazer, rode o site localmente, tire um print de 1200x630 dessa página, salve como `og.jpg` e aumente o `?v=` do `og:image` em todas as páginas. A pasta `docs/` não vai para a VPS.
+- **Pré-visualização do link** (WhatsApp, Instagram, Facebook): cada página tem a sua imagem de 1200x630 e o bloco completo de `og:*` e `twitter:*` (título, descrição, imagem com tamanho e `og:image:alt`, nome do site, `pt_BR`). Início: `assets/img/og.jpg`; doces e Como pedir: `assets/img/og-<página>.jpg`. Todas montadas em `docs/og/og.html` (`?p=bolos`, `brigadeiros`, `tortas`, `geladinhos`, `como-pedir`): rode o site localmente, tire um print de 1200x630, salve com o nome da página e aumente o `?v=` do `og:image` dela. Ao mudar preço, mude também na imagem. O WhatsApp guarda a prévia antiga de um link por um tempo; o `?v=` novo ajuda. A pasta `docs/` não vai para a VPS.
+- **Sem botão fixo de WhatsApp** (desde 24/10/2026): o site é para a pessoa montar o pedido e mandar pronto. O botão do topo é "Fazer pedido" (leva ao cardápio do Início, `#cardapio`); o WhatsApp aparece no Finalizar, em Como pedir e no rodapé.
 
 ## Fotos e logo
 

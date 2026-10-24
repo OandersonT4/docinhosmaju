@@ -222,16 +222,6 @@ em { font-family: var(--fonte-destaque); font-style: italic; font-weight: 600; c
 .contato .rotulo { margin: 0; }
 .numero { margin: 0; font-size: 1.8rem; font-weight: 800; letter-spacing: -0.02em; }
 
-/* botão flutuante do WhatsApp */
-.com-pedido .flutuante { display: none; }
-.flutuante {
-  position: fixed; right: 18px; bottom: 18px; z-index: 20;
-  width: 58px; height: 58px; border-radius: 50%;
-  display: grid; place-items: center;
-  background: var(--cor-whats); color: #fff;
-  box-shadow: 0 10px 24px rgba(0, 0, 0, .2);
-}
-
 /* 4. LAYOUT --------------------------------------------------------------- */
 .topo {
   position: sticky; top: 0; z-index: 10;
