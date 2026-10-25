@@ -32,6 +32,8 @@ Tudo em `assets/estilo.css`: os tokens ficam no começo (`--cor-*`, `--t-*`, `--
 - Cada página tem a sua palavra principal no título e no `<h1>`: Início "Doceria em Nova Serrana", Bolos "Bolo de pote em Nova Serrana", Brigadeiros "Brigadeiro em Nova Serrana", Tortas "Torta de limão em Nova Serrana", Geladinhos "Geladinho gourmet em Nova Serrana". Duas páginas não disputam a mesma palavra.
 - Cada página de doce tem um bloco de texto no fim (`.texto-seo`) com os sabores, o preço, a entrega em Nova Serrana e links para os outros doces. Ao mudar sabor ou preço, mude também esse texto.
 - Início com JSON-LD `Bakery` (nome, telefone, Nova Serrana, Pix/dinheiro, Instagram e os 4 produtos com preço). Como pedir com perguntas frequentes e o JSON-LD `FAQPage` com as mesmas perguntas: ao mudar uma, mude as duas.
+- Cada página de doce tem o JSON-LD `Product` (nome, sabores, preço e a doceria como vendedora) e o `BreadcrumbList` (Início › doce); Como pedir tem o `BreadcrumbList`. Ao mudar preço ou sabor, mude também nesse JSON-LD.
+- O que fica fora do site (Search Console, Perfil da Empresa no Google, avaliações): passo a passo em `docs/google.md`.
 - `sitemap.xml` (atualize o `lastmod` ao mudar páginas), `robots.txt` e `404.html` (com `noindex`). Para o Nginx usar a página 404, a configuração do site precisa de `error_page 404 /404.html;`.
 - Fotos de sabor com `alt` descrevendo o sabor. Rodapé com "Nova Serrana/MG".
 
