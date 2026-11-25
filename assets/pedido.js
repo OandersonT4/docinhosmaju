@@ -7,7 +7,7 @@
 // grátis a partir de R$ 40) e, na entrega, preenche o endereço buscando pelo CEP (ViaCEP).
 // Também escolhe o pagamento: Pix ou dinheiro (e, no dinheiro, se precisa de troco e para quanto).
 (function () {
-  var WHATS = '5537998765591';
+  var WHATS = '5537998756846';
   var CHAVE = 'docemaju-pedido';
   var ENTREGA_GRATIS = 40; // pedidos a partir deste valor têm entrega grátis
   var BRINDE_A_CADA = 4; // a cada 4 geladinhos, 1 de brinde (a pessoa escolhe o sabor)
