@@ -18,7 +18,7 @@ Igual ao do seu site (`docs/google.md` do oandersont4):
 2. Nome: **Doce Maju** (sem palavras a mais, o Google pune nome recheado).
 3. Categoria principal: **Confeitaria**. Secundárias: Loja de doces, Serviço de entrega de comida.
 4. Como a retirada ainda não tem local confirmado, marque que **não atende clientes no endereço** e coloque a **área de atendimento** Nova Serrana. O endereço fica escondido.
-5. Telefone (37) 99876-5591, site `https://docinhosmaju.com.br/`, horário de atendimento dos pedidos.
+5. Telefone (37) 99875-6846, site `https://docinhosmaju.com.br/`, horário de atendimento dos pedidos.
 6. Produtos: os 4 doces com foto, preço e link da página de cada um (as mesmas fotos de `assets/img/`).
 7. Verificação: o Google costuma pedir vídeo mostrando a cozinha e os doces. Siga o que aparecer.
 
